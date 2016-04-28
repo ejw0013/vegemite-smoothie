@@ -5,10 +5,14 @@ public class LibraryCatalog{
 	private static List<MediaItem> items;
 	private static List<MediaTitle> titles;
 	private static LibraryCatalog instance = null;
-	protected LibraryCatalog(){}
-	public LibraryCatalog getInstance(){
+
+	protected LibraryCatalog(final List<MediaItem> items, finalList<MediaTitle> titles){
+		this.items = items;
+		this.titles =titles;
+	}
+	public LibraryCatalog getInstance(final List<MediaItem> items, finalList<MediaTitle> titles){
 		if(instance == null){
-			instance = new LibraryCatalog();
+			instance = new LibraryCatalog(List<MediaItem> items, List<MediaTitle> titles);
 		}
 		return instance;
 	}
