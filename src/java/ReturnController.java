@@ -1,3 +1,3 @@
-public class ReturnController
+public class ReturnController implements Controller
 {
 }
