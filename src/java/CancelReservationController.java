@@ -1,3 +1,3 @@
-public class CancelReservationController
+public class CancelReservationController implements Controller
 {
 }
