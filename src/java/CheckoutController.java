@@ -1,4 +1,4 @@
-public class CheckoutController
+public class CheckoutController implements Controller
 {
   
 }
