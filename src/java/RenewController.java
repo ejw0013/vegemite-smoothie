@@ -1,3 +1,3 @@
-public class RenewController
+public class RenewController implements Controller
 {
 }
