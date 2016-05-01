@@ -1,5 +1,9 @@
 package com.veggie.src.java.accountcontroller;
 
+import com.veggie.src.java.Account;
+import com.veggie.src.java.Controller;
+import com.veggie.src.java.notification.Notification;
+
 public class LookUpUserController implements Controller {
    //private Form lookUpForm;
    private Notification notification;
@@ -8,7 +12,7 @@ public class LookUpUserController implements Controller {
       return null;
    }
 
-   public Notification notify() {
+   public Notification getNotification() {
       return notification;
    }
 }

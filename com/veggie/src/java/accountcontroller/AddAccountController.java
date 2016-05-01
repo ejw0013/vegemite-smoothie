@@ -1,5 +1,11 @@
 package com.veggie.src.java.accountcontroller;
 
+import com.veggie.src.java.Controller;
+import com.veggie.src.java.form.Form;
+import com.veggie.src.java.form.TomcatFormBuilder;
+import com.veggie.src.java.notification.Notification;
+import com.veggie.src.java.notification.TomcatNotificationFactory;
+
 public class AddAccountController implements Controller {
 
    private Form addAccountForm;
@@ -7,7 +13,7 @@ public class AddAccountController implements Controller {
    private TomcatFormBuilder addAcctFormBuilder;
    private TomcatNotificationFactory notifyFactory;
 
-   public AddAccountController(TomcatFormBuilder formBuilder, TomCatNotificationFactory notifFact) {
+   public AddAccountController(TomcatFormBuilder formBuilder, TomcatNotificationFactory notifFact) {
       addAccountForm = null;
       notification = null;
       addAcctFormBuilder = formBuilder;
@@ -19,6 +25,7 @@ public class AddAccountController implements Controller {
       addAcctFormBuilder.addField("Password");
       addAcctFormBuilder.addField("ID Number");
       //addAcctFormBuilder.addField("
+      return addAccountForm;
    }
 
    public Form clickAccountButton() {

@@ -1,5 +1,9 @@
 package com.veggie.src.java.accountcontroller;
 
+import com.veggie.src.java.Account;
+import com.veggie.src.java.Controller;
+import com.veggie.src.java.notification.Notification;
+
 import java.io.*;
 
 public class SearchUserController implements Controller {
@@ -9,7 +13,7 @@ public class SearchUserController implements Controller {
       return null;
    }
 
-   public Notification notify() {
+   public Notification getNotification() {
       return notification;
    }
 }
