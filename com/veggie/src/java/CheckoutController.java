@@ -1,6 +1,20 @@
+
 package com.veggie.src.java;
 
-public class CheckoutController implements Controller
+public class CheckoutReservationController implements Controller
 {
-  Form checkoutForm;
+  AbstractFormBuilderFactory fbf;
+  AbstractFormBuilder fb
+  Form f;
+  
+  public CheckoutReservationController
+  {
+    
+  }
+  
+  public Form createForm()
+  {
+    Return f;
+  }
+  
 }
