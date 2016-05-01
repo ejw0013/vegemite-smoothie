@@ -18,7 +18,7 @@ public class AddReservationController implements Controller
 
   public Form createForm()
   {
-    Return f;
+    return f;
   }
 
 }
