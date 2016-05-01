@@ -2,6 +2,8 @@ package com.veggie.src.java.database;
 
 import java.util.Set;
 import java.util.List;
+import com.veggie.src.java.MediaItem;
+
 
 public class PrototypeItemDatabaseManager extends PrototypeDatabaseManager implements ItemDatabaseManager {
 

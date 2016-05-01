@@ -1,6 +1,7 @@
 package com.veggie.src.java.database;
 
 import java.util.List;
+import com.veggie.src.java.Account;
 
 public interface AccountDatabaseManager extends DatabaseManager {
   public void add(Account account);
