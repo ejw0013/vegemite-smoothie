@@ -6,8 +6,13 @@ public class AddReservationController implements Controller
   AbstractFormBuilder fb
   Form f;
   
-  public AddreservationController
+  public AddReservationController
   {
     
+  }
+  
+  public Form createForm()
+  {
+    Return f;
   }
 }
