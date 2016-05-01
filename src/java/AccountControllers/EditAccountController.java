@@ -1,4 +1,4 @@
-public class EditAccountController {
+public class EditAccountController implements Controller {
    Form editAccountForm;
    Notification notification;
    

@@ -1,4 +1,4 @@
-public class DeleteAccountController {
+public class DeleteAccountController implements Controller {
    private Form deleteAccountForm;
    private Notification notification;
    

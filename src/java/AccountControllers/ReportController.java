@@ -1,7 +1,7 @@
-public class PayFeeController {
+public class ReportController implements Controller {
    private Notification notification;
    
-   public void payFee(Account user, int amount) {
+   public void report(Account user) {
    
    }
    

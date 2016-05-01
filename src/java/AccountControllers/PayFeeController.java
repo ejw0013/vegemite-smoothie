@@ -1,9 +1,8 @@
-public class LookUpUserController {
-   //private Form lookUpForm;
+public class PayFeeController implements Controller {
    private Notification notification;
    
-   public Account lookUpUser() {
-      return null;
+   public void payFee(Account user, int amount) {
+   
    }
    
    public Notification notify() {

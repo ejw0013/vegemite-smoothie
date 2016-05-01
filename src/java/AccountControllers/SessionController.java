@@ -1,4 +1,4 @@
-public class SessionController {
+public class SessionController implements Controller {
    private Notification notification;
    
    public void login(Account user) {

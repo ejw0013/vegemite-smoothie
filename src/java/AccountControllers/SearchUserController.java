@@ -1,6 +1,6 @@
 import java.io.*;
 
-public class SearchUserController {
+public class SearchUserController implements Controller {
    private Notification notification;
    
    public Account findUser(String name) {

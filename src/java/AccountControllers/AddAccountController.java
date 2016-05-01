@@ -1,8 +1,7 @@
-public class AddAccountController {
+public class AddAccountController implements Controller {
 
    private Form addAccountForm;
    private Notification notification;
-   //private Account user;
    private TomcatFormBuilder addAcctFormBuilder;
    private TomcatNotificationFactory notifyFactory;
    

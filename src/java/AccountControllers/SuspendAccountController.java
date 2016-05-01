@@ -1,4 +1,4 @@
-public class SuspendAccountController {
+public class SuspendAccountController implements Controller {
    private Form suspendAccountForm;
    private Notification notification;
    
