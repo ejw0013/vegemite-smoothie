@@ -8,13 +8,13 @@ public class LibraryCatalog{
 	private static List<MediaTitle> titles;
 	private static LibraryCatalog instance = null;
 
-	protected LibraryCatalog(final List<MediaItem> items, finalList<MediaTitle> titles){
+	protected LibraryCatalog(final List<MediaItem> items, final List<MediaTitle> titles){
 		this.items = items;
 		this.titles =titles;
 	}
-	public LibraryCatalog getInstance(final List<MediaItem> items, finalList<MediaTitle> titles){
+	public LibraryCatalog getInstance(final List<MediaItem> items, final List<MediaTitle> titles){
 		if(instance == null){
-			instance = new LibraryCatalog(List<MediaItem> items, List<MediaTitle> titles);
+			instance = new LibraryCatalog(items, titles);
 		}
 		return instance;
 	}

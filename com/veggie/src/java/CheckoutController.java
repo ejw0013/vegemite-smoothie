@@ -1,6 +1,8 @@
 
 package com.veggie.src.java;
 
+import com.veggie.src.java.form.Form;
+
 public class CheckoutController implements Controller
 {
   AbstractFormBuilderFactory fbf;
