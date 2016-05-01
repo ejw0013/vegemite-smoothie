@@ -1,10 +1,11 @@
-package com.veggie.src.java.database;
+package com.veggie.src.java.database.prototype;
 
 import java.util.Set;
 import java.util.List;
 import java.util.HashSet;
 
 import com.veggie.src.java.MediaTitle;
+import com.veggie.src.java.database.TitleDatabaseManager;
 
 public class PrototypeTitleDatabaseManager extends PrototypeDatabaseManager implements TitleDatabaseManager {
   private PrototypeDB db;

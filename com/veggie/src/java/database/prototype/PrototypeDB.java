@@ -1,4 +1,4 @@
-package com.veggie.src.java.database;
+package com.veggie.src.java.database.prototype;
 
 import java.util.Map;
 import java.util.HashMap;
