@@ -5,8 +5,8 @@ public class UndergraduateStudentAccount extends PatronAccount{
 	public final String type = "UndergraduateStudentAccount";
 	private int studentId;
 
-	public UndergraduateStudentAccount(final String username, final String contactInformation, final int id, final int studentId){
-		super(username, contactInformation, id);
+	public UndergraduateStudentAccount(final String username, final String contactInformation, final int id, final int studentId, password){
+		super(username, contactInformation, id, password);
 		this.studentId = studentId;
 	}
 

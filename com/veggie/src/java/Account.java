@@ -18,10 +18,11 @@ public abstract class Account{
 	public static int GRADUATE_STUDENT = 4;
 	public static int UNDERGRADUATE_STUDENT = 5;
 
-	public Account(final String username, final String contactInformation, final int id){
+	public Account(final String username, final String contactInformation, final int id, final String password){
 		this.username = username;
 		this.contactInformation = contactInformation;
 		this.id = id;
+		this.password = password;
 		fields = new HashMap<>();
 		fields.put("username", username);
 		fields.put("contactInformation", contactInformation);
