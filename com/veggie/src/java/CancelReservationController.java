@@ -6,13 +6,12 @@ import com.veggie.src.java.form.AbstractFormBuilderFactory;
 
 public class CancelReservationController implements Controller
 {
-  private AbstractFormBuilderFactory fbf;
   private AbstractFormBuilder fb;
   private Form f;
 
   public CancelReservationController()
   {
-
+    fb = AbstractFormBuilderFactory.getInstance().createFormBuilder();
   }
 
   public Form createForm()
