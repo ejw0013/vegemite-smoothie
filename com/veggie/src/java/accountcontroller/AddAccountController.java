@@ -52,19 +52,19 @@ public class AddAccountController implements Controller {
       List<String> formData = addAccountForm.getData();
       String accountType = formData.get(0);
       if (accountType == "AssistantAccount") {
-         AssistantAccount newUser = new AssistantAccount(formData.get(1), formData.get(3), 0, Integer.parseInt(formData.get(4))); //password
+         AssistantAccount newUser = new AssistantAccount(formData.get(1), formData.get(3), 0, Integer.parseInt(formData.get(4)), formData.get(2)); 
       }
       else if (accountType == "LibrarianAccount") {
-         LibrarianAccount newUser = new LibrarianAccount(formData.get(1), formData.get(3), 0, Integer.parseInt(formData.get(4))); //password
+         LibrarianAccount newUser = new LibrarianAccount(formData.get(1), formData.get(3), 0, Integer.parseInt(formData.get(4)), formData.get(2));
       }
       else if (accountType == "GraduateStudentAccount") {
-         GraduateStudentAccount newUser = new GraduateStudentAccount(formData.get(1), formData.get(3), 0, Integer.parseInt(formData.get(5))); //password
+         GraduateStudentAccount newUser = new GraduateStudentAccount(formData.get(1), formData.get(3), 0, Integer.parseInt(formData.get(5)), formData.get(2));
       }
       else if (accountType == "FacultyAccount") {
-         FacultyAccount newUser = new FacultyAccount(formData.get(1), formData.get(3), 0, Integer.parseInt(formData.get(6))); //password
+         FacultyAccount newUser = new FacultyAccount(formData.get(1), formData.get(3), 0, Integer.parseInt(formData.get(6)), formData.get(2));
       }
       else if (accountType == "UndergraduateStudentAccount") {
-         UndergraduateStudentAccount newUser = new UndergraduateStudentAccount(formData.get(1), formData.get(3), 0, Integer.parseInt(formData.get(5))); //password
+         UndergraduateStudentAccount newUser = new UndergraduateStudentAccount(formData.get(1), formData.get(3), 0, Integer.parseInt(formData.get(5)), formData.get(2));
       }
       else {
          System.out.println("Error: invalid account type");
