@@ -7,7 +7,7 @@ import com.veggie.src.java.ReservationTransaction;
 import com.veggie.src.java.Account;
 
 public interface TransactionDatabaseManager extends DatabaseManager {
-  public void addReservation(int itemId, int accountId);
+  public void addTransaction(Transaction transaction);
   public boolean checkReserved(int itemId);
   public int getNumberReservations(int userId);
   public void finalizeTransaction(int itemId);

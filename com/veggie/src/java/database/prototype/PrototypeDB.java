@@ -16,8 +16,11 @@ public class PrototypeDB {
   private Map<Integer, Account> accountTable;
 
   private int accountId;
+  private int transactionId;
 
   public PrototypeDB() {
+    accountId = 0;
+    transactionId = 0;
     titleTable = new HashMap<>();
     itemTable = new HashMap<>();
     transactionTable = new HashMap<>();
@@ -46,6 +49,14 @@ public class PrototypeDB {
 
   public void setAccountId(int accountId) {
       this.accountId = accountId;
+  }
+
+  public int getTransactionId() {
+      return transactionId;
+  }
+
+  public void setTransactionId(int transactionId) {
+      this.transactionId = transactionId;
   }
 
 }

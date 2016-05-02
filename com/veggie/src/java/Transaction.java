@@ -1,13 +1,36 @@
 package com.veggie.src.java;
 
-public interface Transaction{
-	public abstract PatronAccount getPatronAccount();
+public abstract class Transaction{
 
-	public abstract long getTime();
+	public static final int INACTIVE = 0;
+	public static final int ACTIVE = 1;
 
-	public abstract int getId();
+	protected PatronAccount patron;
+	protected long time;
+	protected int status;
+	protected int id;
 
-	public abstract int getStatus();
+	public PatronAccount getPatronAccount() {
+		return patron;
+	}
 
-	public abstract void resolve();
+	public final long getTime() {
+		return time;
+	}
+
+	public final int getId() {
+		return id;
+	}
+
+	public final void setId(int id) {
+		this.id = id;
+	}
+
+	public final int getStatus() {
+		return status;
+	}
+
+	public final void resolve() {
+		status = INACTIVE;
+	}
 }

@@ -5,8 +5,10 @@ import java.util.ArrayList;
 
 import com.veggie.src.java.Transaction;
 import com.veggie.src.java.ReservationTransaction;
+import com.veggie.src.java.RentalTransaction;
 import com.veggie.src.java.Account;
 import com.veggie.src.java.database.TransactionDatabaseManager;
+import com.veggie.src.java.MediaItem;
 
 
 public class PrototypeTransactionDatabaseManager extends PrototypeDatabaseManager implements TransactionDatabaseManager {
@@ -17,31 +19,76 @@ public class PrototypeTransactionDatabaseManager extends PrototypeDatabaseManage
       this.db = db;
     }
 
-    public void addReservation(int titleId, int accountId) {
-
+    public void addTransaction(Transaction transaction) {
+        int transactionId = db.getTransactionId() + 1;
+        transaction.setId(transactionId);
+        db.getTransactionTable().put(transactionId, transaction);
+        db.setTransactionId(transactionId);
     }
 
     public boolean checkReserved(int itemId) {
-        return false;
+        return db.getItemTable().get(itemId).getStatus() == MediaItem.RESERVED;
     }
 
     public int getNumberReservations(int userId) {
-        return 0;
+        int count = 0;
+        for (Integer transactionId : db.getTransactionTable().keySet()) {
+            Transaction transaction = db.getTransactionTable().get(transactionId);
+            if (transaction instanceof ReservationTransaction) {
+                if (getTransactionUser(transactionId).getId() == userId) {
+                    count += transaction.getStatus() == Transaction.ACTIVE ? 1 : 0;
+                }
+            }
+        }
+        return count;
     }
 
-    public void finalizeTransaction(int itemId) {
-
+    public void finalizeTransaction(int transactionId) {
+        Transaction transaction = db.getTransactionTable().get(transactionId);
+        transaction.resolve();
     }
 
-    public Account getTransactionUser(int itemId) {
-        return null;
+    public Account getTransactionUser(int transactionId) {
+        return db.getTransactionTable().get(transactionId).getPatronAccount();
+    }
+
+    public Account getCurrentRenter(int itemId) {
+        Account out = null;
+        for (Integer transactionId : db.getTransactionTable().keySet()) {
+            Transaction transaction = db.getTransactionTable().get(transactionId);
+            if (transaction instanceof RentalTransaction && transaction.getStatus() == Transaction.ACTIVE) {
+                RentalTransaction rental = (RentalTransaction) transaction;
+                if (rental.getItem().getId() == itemId) {
+                    out = rental.getPatronAccount();
+                }
+            }
+        }
+        return out;
     }
 
     public List<Transaction> getUserTransactions(int userId) {
-        return null;
+        List<Transaction> out = new ArrayList<>();
+
+        for (Integer transactionId : db.getTransactionTable().keySet()) {
+            Transaction transaction = db.getTransactionTable().get(transactionId);
+            if (transaction.getPatronAccount().getId() == userId) {
+                out.add(transaction);
+            }
+        }
+
+        return out;
     }
 
     public List<ReservationTransaction> getUserReservations(int userId) {
-        return null;
+        List<ReservationTransaction> out = new ArrayList<>();
+
+        for (Integer transactionId : db.getTransactionTable().keySet()) {
+            Transaction transaction = db.getTransactionTable().get(transactionId);
+            if (transaction.getPatronAccount().getId() == userId) {
+                if (transaction instanceof ReservationTransaction)
+                out.add((ReservationTransaction)transaction);
+            }
+        }
+        return out;
     }
 }
