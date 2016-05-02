@@ -14,6 +14,7 @@ public class PrototypeDB {
   private Map<Integer, MediaItem> itemTable;
   private Map<Integer, Transaction> transactionTable;
   private Map<Integer, Account> accountTable;
+  private Map<Integer, Integer> limitsTable;
 
   private int accountId;
   private int transactionId;
@@ -41,6 +42,10 @@ public class PrototypeDB {
 
   public Map<Integer, Account> getAccountTable() {
       return accountTable;
+  }
+
+  public Map<Integer, Integer> getLimitsTable() {
+      return limitsTable;
   }
 
   public int getAccountId() {
