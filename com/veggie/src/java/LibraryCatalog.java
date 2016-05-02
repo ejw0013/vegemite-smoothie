@@ -12,7 +12,7 @@ public class LibraryCatalog{
 		this.items = items;
 		this.titles =titles;
 	}
-	public LibraryCatalog getInstance(final List<MediaItem> items, final List<MediaTitle> titles){
+	public static LibraryCatalog getInstance(final List<MediaItem> items, final List<MediaTitle> titles){
 		if(instance == null){
 			instance = new LibraryCatalog(items, titles);
 		}
