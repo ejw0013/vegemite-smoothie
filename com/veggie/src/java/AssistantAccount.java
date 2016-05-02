@@ -5,15 +5,15 @@ public class AssistantAccount extends EmployeeAccount{
 
 	public LibrarianAccount supervisor;
 
-	public AssistantAccount(final String userName, final String contactInformation, final int id,
+	public AssistantAccount(final String username, final String contactInformation, final int id,
 													final int employeeId, final LibrarianAccount supervisor){
-		super(userName, contactInformation, id, employeeId);
+		super(username, contactInformation, id, employeeId);
 		this.supervisor = supervisor;
 	}
 
 
 	public String getSupervisorName(){
-		return supervisor.getUserName();
+		return supervisor.getusername();
 	}
 
 	public String getType(){

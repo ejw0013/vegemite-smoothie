@@ -14,27 +14,27 @@ public class PrototypeItemDatabaseManager extends PrototypeDatabaseManager imple
     }
 
     public void addItem(MediaItem item) {
-
+        db.getItemTable().put(item.getId(), item);
     }
 
     public MediaItem getItem(int itemId) {
-        return null;
+        return db.getItemTable().get(itemId);
     }
 
     public boolean isReservable(int itemId) {
-        return false;
+        return true;
     }
 
     public void markAvailable(int itemId) {
-
+        db.getItemTable().get(itemId).setStatus(MediaItem.AVAILABLE);
     }
 
     public void markReserved(int itemId) {
-
+        db.getItemTable().get(itemId).setStatus(MediaItem.RESERVED);
     }
 
     public void markUnavailable(int itemId) {
-
+        db.getItemTable().get(itemId).setStatus(MediaItem.UNAVAILABLE);
     }
 
     public Set<MediaItem> getMatchingItems(List<String> fields, List<String> fieldData) {
