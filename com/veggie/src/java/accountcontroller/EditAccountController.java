@@ -21,9 +21,9 @@ public class EditAccountController implements Controller {
       notification = null;
       AbstractFormBuilder builder = AbstractFormBuilderFactory.getInstance().createFormBuilder();
       builder.addField("Library ID of Account to Edit");
-      builder.addField("New Username");
-      builder.addField("New Password");
-      builder.addField("New Contact Information");
+      builder.addField("username");
+      builder.addField("password");
+      builder.addField("contactInformation");
       editAccountForm = builder.getResult();
       manager = AbstractDatabaseManagerFactory.getInstance().createAccountDatabaseManager();
    }
@@ -34,11 +34,12 @@ public class EditAccountController implements Controller {
 
    public Notification submitForm(Form form) {
       editAccountForm = form;
-      List<String> formData = editAccountForm.getData();
+      //List<String> formData = editAccountForm.getData();
       //getuser
       //LookUpUserController lookUp = new LookUpUserController();
       //Account user = lookUp.lookUpUser(Integer.parseInt(formData.get(0)));
       //edit the user
+      manager.edit(Integer.parseInt(editAccountForm.getData().get(0)), editAccountForm.getFieldNames(), editAccountForm.getData()); //need to update
       return null;
    }
 }

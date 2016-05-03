@@ -36,6 +36,7 @@ public class DeleteAccountController implements Controller {
       //LookUpUserController lookUp = new LookUpUserController();
       //Account user = lookUp.lookUpUser(Integer.parseInt(formData.get(0)));
       //delete the user
+      manager.delete(Integer.parseInt(formData.get(0)));
       return null;
    }
 }
