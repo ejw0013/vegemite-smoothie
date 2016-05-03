@@ -9,8 +9,11 @@ public abstract class Account{
 	protected int id;
 	protected String password;
 	protected Map<String, String> fields;
+	protected int status;
+	protected double fees;
 
-
+	public static int ACTIVE = 1;
+	public static int SUSPENDED = 0;
 	public static int UNKNOWN = 0;
 	public static int LIBRARIAN = 1;
 	public static int ASSISTANT = 2;
@@ -19,6 +22,7 @@ public abstract class Account{
 	public static int UNDERGRADUATE_STUDENT = 5;
 
 	public Account(final String username, final String contactInformation, final int id, final String password){
+		status = ACTIVE;
 		this.username = username;
 		this.contactInformation = contactInformation;
 		this.id = id;
@@ -58,5 +62,32 @@ public abstract class Account{
 		return fields.get(field);
 	}
 
+	public void suspend(){
+		this.status = SUSPENDED;
+	}
+
+	public void reinstate(){
+		this.status = ACTIVE;
+	}
+
+	public double getFees(){
+		return this.fees;
+	}
+
+	public double payFees(double amountPaid){
+		return this.fees -= amountPaid;
+	}
+
+	public double addFees(double feesAdded){
+		return this.fees += feesAdded;
+	}
+
+	public boolean isActive(){
+		return this.status == ACTIVE;
+	}
+
+	public boolean isSuspended(){
+		return this.status == SUSPENDED;
+	}
 	public abstract String getType();
 }
