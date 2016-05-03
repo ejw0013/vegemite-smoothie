@@ -1,22 +1,34 @@
 package com.veggie.src.java.accountcontroller;
 
 import com.veggie.src.java.Controller;
+import com.veggie.src.java.Account;
 import com.veggie.src.java.form.Form;
 import com.veggie.src.java.notification.Notification;
+import com.veggie.src.java.form.AbstractFormBuilder;
+import com.veggie.src.java.form.AbstractFormBuilderFactory;
+
+import java.util.List;
+import java.util.ArrayList;
 
 public class SuspendAccountController implements Controller {
    private Form suspendAccountForm;
    private Notification notification;
 
-   public void create() {
-
+   public SuspendAccountController() {
+      notification = null;
+      AbstractFormBuilder builder = AbstractFormBuilderFactory.getInstance().createFormBuilder();
+      builder.addField("Library ID");
+      suspendAccountForm = builder.getResult();
    }
 
    public Form clickSuspendAccountButton() {
-      return null;
+      return suspendAccountForm;
    }
 
-   public Notification submitForm(Form suspendAccountForm) {
+   public Notification submitForm(Form form) {
+      suspendAccountForm = form;
+      List<String> formData = suspendAccountForm.getData();
+      //get user
       return null;
    }
 }

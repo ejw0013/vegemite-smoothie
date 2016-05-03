@@ -8,7 +8,7 @@ public class LookUpUserController implements Controller {
    //private Form lookUpForm;
    private Notification notification;
 
-   public Account lookUpUser() {
+   public Account lookUpUser(int idNum) {
       return null;
    }
 

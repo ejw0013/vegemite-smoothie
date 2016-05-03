@@ -21,13 +21,7 @@ public class AddAccountController implements Controller {
    private Notification notification;
 
    public AddAccountController() {
-      addAccountForm = null;
       notification = null;
-      //addAcctFormBuilder = formBuilder;
-      //notifyFactory = notifFact;
-   }
-
-   private void create() {
       AbstractFormBuilder builder = AbstractFormBuilderFactory.getInstance().createFormBuilder();
       //fields for all account types
       builder.addField("Account Type");
@@ -43,7 +37,6 @@ public class AddAccountController implements Controller {
    }
 
    public Form clickAccountButton() {
-      create();
       return addAccountForm;
    }
    //fields: accounttype, username, password, contactinfo, employeeid, studentid, facultyid
@@ -52,7 +45,8 @@ public class AddAccountController implements Controller {
       List<String> formData = addAccountForm.getData();
       String accountType = formData.get(0);
       if (accountType == "AssistantAccount") {
-         AssistantAccount newUser = new AssistantAccount(formData.get(1), formData.get(3), 0, Integer.parseInt(formData.get(4)), formData.get(2)); 
+         AssistantAccount newUser = new AssistantAccount(formData.get(1), formData.get(3), 0, Integer.parseInt(formData.get(4)), formData.get(2));
+         //add to account 
       }
       else if (accountType == "LibrarianAccount") {
          LibrarianAccount newUser = new LibrarianAccount(formData.get(1), formData.get(3), 0, Integer.parseInt(formData.get(4)), formData.get(2));
