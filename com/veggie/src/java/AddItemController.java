@@ -20,7 +20,7 @@ public class AddItemController implements Controller {
 	}
 	
 	public Form clickAddItemButton() {
-	  return null;
+	  return addItemForm;
 	}
 	
 	public Notification submitForm() {
