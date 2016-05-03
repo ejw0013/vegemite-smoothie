@@ -36,15 +36,15 @@ public class AddItemController implements Controller {
 		String isbn = formData.get(0);
 		titleStatus = manager.checkTitle(isbn, addItemForm.getFieldNames(), formData);
 		if (titleStatus == MediaTitle.INVALID_TITLE) {
-			
+			//TO DO
 		} else {
-		
+			//TO DO
 		}
 		return notification;
 	}
 	
 	public void respondToNotification() {
-		
+		//TO DO
 	}
 
 }

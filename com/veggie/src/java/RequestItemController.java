@@ -18,19 +18,18 @@ public class RequestItemController implements Controller {
 	}
 	
 	public Form clickRequestItemButton() {
+		//TO DO
 		return null;
 	}
 	
 	public Notification submitForm(Form form) {
+		//TO DO
 		return null;
 	}
 	
 	public void respondToNotification(Notification notif) {
-	
+		//TO DO
 	}
 	
-	public void notifyUser() {
-	
-	}
 
 }
