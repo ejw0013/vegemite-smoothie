@@ -71,4 +71,39 @@ public class PrototypeAccountDatabaseManager extends PrototypeDatabaseManager im
         return new ArrayList<Account>(output);
     }
 
+    public void delete(int userId) {
+        db.getAccountTable().remove(userId);
+    }
+
+    public void edit(int userId, List<String> fields, List<String> fieldData) {
+        Account user = db.getAccountTable().get(userId);
+
+        for (int i = 0; i < fields.size(); i++) {
+            String fieldName = fields.get(i);
+            String fieldEntry = fieldData.get(i);
+            if (user.fieldExists(fieldName) && fieldEntry.length() > 0) {
+                user.setData(fieldName, fieldEntry);
+            }
+        }
+    }
+
+    public void suspend(int userId) {
+        Account user = db.getAccountTable().get(userId);
+        user.suspend();
+    }
+
+    public void addFee(int userId, double feeAmount) {
+        Account user = db.getAccountTable().get(userId);
+        user.addFees(feeAmount);
+    }
+
+    public double payFee(int userId, double payment) {
+        Account user = db.getAccountTable().get(userId);
+        double prevBalance = user.getFees();
+        double paidToBalance = Math.min(prevBalance, payment);
+        double change = prevBalance - payment;
+        user.payFees(paidToBalance);
+        return change;
+    }
+
 }

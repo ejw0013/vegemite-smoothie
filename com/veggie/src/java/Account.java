@@ -62,6 +62,10 @@ public abstract class Account{
 		return fields.get(field);
 	}
 
+	public void setData(String field, String data) {
+		fields.put(field, data);
+	}
+
 	public void suspend(){
 		this.status = SUSPENDED;
 	}

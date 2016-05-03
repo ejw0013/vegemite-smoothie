@@ -8,4 +8,10 @@ public interface AccountDatabaseManager extends DatabaseManager {
   public Account getUser(int userId);
   public int getUserType(int userId);
   public List<Account> getMatchingUsers(List<String> fields, List<String> fieldData);
+
+  public void delete(int userId);
+  public void edit(int userId, List<String> fields, List<String> fieldData);
+  public void suspend(int userId);
+  public void addFee(int userId, double feeAmount);
+  public double payFee(int userId, double payment);
 }
