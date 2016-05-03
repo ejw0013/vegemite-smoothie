@@ -19,7 +19,7 @@ public class CancelReservationController implements Controller
   {
     formBuilder = AbstractFormBuilderFactory.getInstance().createFormBuilder();
     formBuilder.addField("User ID");
-    formBuilder.addField("Item ISBN");
+    formBuilder.addField("Item ID");
     form = formBuilder.getResult();
   }
 
@@ -31,13 +31,13 @@ public class CancelReservationController implements Controller
   public Notification submitForm()
   {
       List<String> formData = form.getData();
-      String ISBN;
-      int id;
+      int itemid;
+      int userid;
       try{
-      	id = Integer.parseInt(formData.get(0));
-      	ISBN = formData.get(1);
+      	userid = Integer.parseInt(formData.get(0));
+      	itemid = Integer.parseInt(formData.get(1));
       	TransactionDatabaseManager transactionDBManager = AbstractDatabaseManagerFactory.getInstance().createTransactionDatabaseManager();
-      transactionDBManager.finalizeReservation(id, ISBN);
+      transactionDBManager.finalizeReservation(userid, itemid);
       }catch(Exception e){
       	System.out.println("Error: incorrect form data");
       }
