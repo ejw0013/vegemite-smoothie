@@ -12,6 +12,10 @@ public class MediaTitle{
 
 	private Map<String, String> fieldMap;
 
+	public static final int NEW_TITLE = 0;
+	public static final int EXISTING_TITLE = 1;
+	public static final int INVALID_TITLE = 2;
+
 
 	public MediaTitle(final int id, final String ISBN, final String title, final String author, final String description){
 		this.id = id;

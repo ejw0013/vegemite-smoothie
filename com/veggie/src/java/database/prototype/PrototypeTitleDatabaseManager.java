@@ -15,7 +15,21 @@ public class PrototypeTitleDatabaseManager extends PrototypeDatabaseManager impl
   }
 
   public int checkTitle(String ISBN, List<String> fields, List<String> fieldData) {
-    return 0;
+    if (!db.getTitleTable().containsKey(ISBN)) {
+        return MediaTitle.NEW_TITLE;
+    } else {
+        MediaTitle title = db.getTitleTable().get(ISBN);
+        for (int i = 0; i < fields.size(); i++) {
+            String fieldName = fields.get(i);
+            String fieldEntry = fieldData.get(i);
+            if (fieldName.length() > 0 && title.containsField(fieldName)) {
+                if (title.getData(fieldName).equals(fieldEntry)) {
+                    return MediaTitle.INVALID_TITLE;
+                }
+            }
+        }
+    }
+    return MediaTitle.EXISTING_TITLE;
   }
 
   public void addTitle(String ISBN, MediaTitle title) {
