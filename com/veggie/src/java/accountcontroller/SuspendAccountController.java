@@ -6,6 +6,8 @@ import com.veggie.src.java.form.Form;
 import com.veggie.src.java.notification.Notification;
 import com.veggie.src.java.form.AbstractFormBuilder;
 import com.veggie.src.java.form.AbstractFormBuilderFactory;
+import com.veggie.src.java.database.AbstractDatabaseManagerFactory;
+import com.veggie.src.java.database.AccountDatabaseManager;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -13,12 +15,14 @@ import java.util.ArrayList;
 public class SuspendAccountController implements Controller {
    private Form suspendAccountForm;
    private Notification notification;
+   private AccountDatabaseManager manager;
 
    public SuspendAccountController() {
       notification = null;
       AbstractFormBuilder builder = AbstractFormBuilderFactory.getInstance().createFormBuilder();
       builder.addField("Library ID of Account to Suspend");
       suspendAccountForm = builder.getResult();
+      manager = AbstractDatabaseManagerFactory.getInstance().createAccountDatabaseManager();
    }
 
    public Form clickSuspendAccountButton() {
@@ -29,8 +33,8 @@ public class SuspendAccountController implements Controller {
       suspendAccountForm = form;
       List<String> formData = suspendAccountForm.getData();
       //get user
-      LookUpUserController lookUp = new LookUpUserController();
-      Account user = lookUp.lookUpUser(Integer.parseInt(formData.get(0)));
+      //LookUpUserController lookUp = new LookUpUserController();
+      //Account user = lookUp.lookUpUser(Integer.parseInt(formData.get(0)));
       //suspend the user
       return null;
    }

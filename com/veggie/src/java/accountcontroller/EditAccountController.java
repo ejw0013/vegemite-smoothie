@@ -6,13 +6,16 @@ import com.veggie.src.java.form.Form;
 import com.veggie.src.java.notification.Notification;
 import com.veggie.src.java.form.AbstractFormBuilder;
 import com.veggie.src.java.form.AbstractFormBuilderFactory;
+import com.veggie.src.java.database.AbstractDatabaseManagerFactory;
+import com.veggie.src.java.database.AccountDatabaseManager;
 
 import java.util.List;
 import java.util.ArrayList;
 
 public class EditAccountController implements Controller {
-   Form editAccountForm;
-   Notification notification;
+   private Form editAccountForm;
+   private Notification notification;
+   private AccountDatabaseManager manager;
 
    public EditAccountController() {
       notification = null;
@@ -22,6 +25,7 @@ public class EditAccountController implements Controller {
       builder.addField("New Password");
       builder.addField("New Contact Information");
       editAccountForm = builder.getResult();
+      manager = AbstractDatabaseManagerFactory.getInstance().createAccountDatabaseManager();
    }
 
    public Form clickEditAccountButton() {
@@ -32,8 +36,8 @@ public class EditAccountController implements Controller {
       editAccountForm = form;
       List<String> formData = editAccountForm.getData();
       //getuser
-      LookUpUserController lookUp = new LookUpUserController();
-      Account user = lookUp.lookUpUser(Integer.parseInt(formData.get(0)));
+      //LookUpUserController lookUp = new LookUpUserController();
+      //Account user = lookUp.lookUpUser(Integer.parseInt(formData.get(0)));
       //edit the user
       return null;
    }

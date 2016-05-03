@@ -11,6 +11,8 @@ import com.veggie.src.java.form.AbstractFormBuilder;
 import com.veggie.src.java.form.AbstractFormBuilderFactory;
 import com.veggie.src.java.notification.Notification;
 import com.veggie.src.java.notification.TomcatNotificationFactory;
+import com.veggie.src.java.database.AbstractDatabaseManagerFactory;
+import com.veggie.src.java.database.AccountDatabaseManager;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -19,6 +21,7 @@ public class AddAccountController implements Controller {
 
    private Form addAccountForm;
    private Notification notification;
+   private AccountDatabaseManager manager;
 
    public AddAccountController() {
       notification = null;
@@ -34,31 +37,36 @@ public class AddAccountController implements Controller {
       builder.addField("Student ID");
       builder.addField("Faculty ID");
       addAccountForm = builder.getResult();
+      manager = AbstractDatabaseManagerFactory.getInstance().createAccountDatabaseManager();
    }
 
    public Form clickAccountButton() {
       return addAccountForm;
    }
    //fields: accounttype, username, password, contactinfo, employeeid, studentid, facultyid
-   public Notification submitForm(Form form) {
+   public Notification submitForm(Form form) { //NOTIFICATION????
       addAccountForm = form;
       List<String> formData = addAccountForm.getData();
       String accountType = formData.get(0);
       if (accountType == "AssistantAccount") {
          AssistantAccount newUser = new AssistantAccount(formData.get(1), formData.get(3), 0, Integer.parseInt(formData.get(4)), formData.get(2));
-         //add to account 
+         manager.add(newUser); 
       }
       else if (accountType == "LibrarianAccount") {
          LibrarianAccount newUser = new LibrarianAccount(formData.get(1), formData.get(3), 0, Integer.parseInt(formData.get(4)), formData.get(2));
+         manager.add(newUser);
       }
       else if (accountType == "GraduateStudentAccount") {
          GraduateStudentAccount newUser = new GraduateStudentAccount(formData.get(1), formData.get(3), 0, Integer.parseInt(formData.get(5)), formData.get(2));
+         manager.add(newUser);
       }
       else if (accountType == "FacultyAccount") {
          FacultyAccount newUser = new FacultyAccount(formData.get(1), formData.get(3), 0, Integer.parseInt(formData.get(6)), formData.get(2));
+         manager.add(newUser);
       }
       else if (accountType == "UndergraduateStudentAccount") {
          UndergraduateStudentAccount newUser = new UndergraduateStudentAccount(formData.get(1), formData.get(3), 0, Integer.parseInt(formData.get(5)), formData.get(2));
+         manager.add(newUser);
       }
       else {
          System.out.println("Error: invalid account type");
