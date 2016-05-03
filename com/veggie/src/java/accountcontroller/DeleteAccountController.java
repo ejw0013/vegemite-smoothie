@@ -17,11 +17,11 @@ public class DeleteAccountController implements Controller {
    public DeleteAccountController() {
       notification = null;
       AbstractFormBuilder builder = AbstractFormBuilderFactory.getInstance().createFormBuilder();
-      builder.addField("Library ID");
+      builder.addField("Library ID of Account to Delete");
       deleteAccountForm = builder.getResult();
    }
 
-   public Form ClickDeleteAccountButton() {
+   public Form clickDeleteAccountButton() {
       return deleteAccountForm;
    }
 
@@ -29,8 +29,9 @@ public class DeleteAccountController implements Controller {
       deleteAccountForm = form;
       List<String> formData = deleteAccountForm.getData();
       //find user from ID
-      Account user;
-      int idNum;
+      LookUpUserController lookUp = new LookUpUserController();
+      Account user = lookUp.lookUpUser(Integer.parseInt(formData.get(0)));
+      //delete the user
       return null;
    }
 }

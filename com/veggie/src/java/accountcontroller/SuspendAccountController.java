@@ -17,7 +17,7 @@ public class SuspendAccountController implements Controller {
    public SuspendAccountController() {
       notification = null;
       AbstractFormBuilder builder = AbstractFormBuilderFactory.getInstance().createFormBuilder();
-      builder.addField("Library ID");
+      builder.addField("Library ID of Account to Suspend");
       suspendAccountForm = builder.getResult();
    }
 
@@ -29,6 +29,9 @@ public class SuspendAccountController implements Controller {
       suspendAccountForm = form;
       List<String> formData = suspendAccountForm.getData();
       //get user
+      LookUpUserController lookUp = new LookUpUserController();
+      Account user = lookUp.lookUpUser(Integer.parseInt(formData.get(0)));
+      //suspend the user
       return null;
    }
 }

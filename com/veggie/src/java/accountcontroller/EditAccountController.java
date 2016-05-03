@@ -32,6 +32,9 @@ public class EditAccountController implements Controller {
       editAccountForm = form;
       List<String> formData = editAccountForm.getData();
       //getuser
+      LookUpUserController lookUp = new LookUpUserController();
+      Account user = lookUp.lookUpUser(Integer.parseInt(formData.get(0)));
+      //edit the user
       return null;
    }
 }
