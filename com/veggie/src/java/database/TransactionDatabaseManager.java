@@ -14,4 +14,5 @@ public interface TransactionDatabaseManager extends DatabaseManager {
   public Account getTransactionUser(int itemId);
   public List<Transaction> getUserTransactions(int userId);
   public List<ReservationTransaction> getUserReservations(int userId);
+  public void finalizeReservation(int itemId, String ISBN);
 }
