@@ -10,6 +10,7 @@ public class GraduateStudentAccount extends PatronAccount {
 	public GraduateStudentAccount(final String username, final String contactInformation, final int id, final int studentId, String password){
 		super(username, contactInformation, id, password);
 		this.studentId = studentId;
+		this.permissions = GRADUATE_STUDENT;
 	}
 
 	public int getStudentId(){

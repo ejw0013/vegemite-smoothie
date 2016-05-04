@@ -11,6 +11,7 @@ public abstract class Account{
 	protected Map<String, String> fields;
 	protected int status;
 	protected double fees;
+	protected int permissions;
 
 	public static int ACTIVE = 1;
 	public static int SUSPENDED = 0;
@@ -95,4 +96,5 @@ public abstract class Account{
 	}
 	public abstract String getType();
 	public abstract String toString();
+	public int getPermissions(){return permissions;}
 }

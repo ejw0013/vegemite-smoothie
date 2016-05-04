@@ -8,6 +8,7 @@ public class AssistantAccount extends EmployeeAccount {
 	public AssistantAccount(final String username, final String contactInformation, final int id,
 													final int employeeId, final String password){
 		super(username, contactInformation, id, employeeId, password);
+		this.permissions = ASSISTANT;
 	}
 
 

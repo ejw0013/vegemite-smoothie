@@ -10,6 +10,7 @@ public class UndergraduateStudentAccount extends PatronAccount {
 	public UndergraduateStudentAccount(final String username, final String contactInformation, final int id, final int studentId, final String password){
 		super(username, contactInformation, id, password);
 		this.studentId = studentId;
+		this.permissions = UNDERGRADUATE_STUDENT;
 	}
 
 	public int getStudentId(){
