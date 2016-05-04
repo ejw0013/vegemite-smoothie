@@ -1,4 +1,4 @@
-package com.veggie.src.java.console;
+package com.veggie.src.java.app;
 
 import com.veggie.src.java.notification.Notification;
 import com.veggie.src.java.form.Form;
