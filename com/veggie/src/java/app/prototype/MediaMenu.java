@@ -36,15 +36,9 @@ public class MediaMenu implements HttpHandler {
 
     public void handleMenu(HttpExchange httpExchange, int sessionId, String controller) throws IOException {
 
-        Map<String, Controller> controllerMap = new TreeMap<>();
-        controllerMap.put("edititem", new EditItemController());
-        controllerMap.put("removeitem", new RemoveItemController());
-        controllerMap.put("additem", new AddItemController());
+        Map<String, Controller> controllerMap = Server.getMediaBinding(sessionId).getControllers();
+        Map<String, String> nameMap = Server.getMediaBinding(sessionId).getNames();
 
-        Map<String, String> nameMap = new HashMap<>();
-        nameMap.put("additem", "Add Item");
-        nameMap.put("edititem", "Edit Item");
-        nameMap.put("removeitem", "Remove Item");
 
         if (controller.length() == 0) {
             StringBuilder response = new StringBuilder();

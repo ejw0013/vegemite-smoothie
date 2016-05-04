@@ -35,24 +35,8 @@ public class TransactionMenu implements HttpHandler {
 
     public void handleMenu(HttpExchange httpExchange, int sessionId, String controller) throws IOException {
 
-        Map<String, Controller> controllerMap = new TreeMap<>();
-        controllerMap.put("addreservation", new AddReservationController());
-        controllerMap.put("cancelreservation", new CancelReservationController());
-        controllerMap.put("checkout", new CheckoutController());
-        controllerMap.put("renew", new RenewController());
-        controllerMap.put("request", new RequestItemController());
-        controllerMap.put("respond", new RespondToRequestController());
-        controllerMap.put("return", new ReturnController());
-
-        Map<String, String> nameMap = new HashMap<>();
-        nameMap.put("addreservation", "Add Reservation");
-        nameMap.put("cancelreservation", "Cancel Reservation");
-        nameMap.put("checkout", "Checkout");
-        nameMap.put("renew", "Renew");
-        nameMap.put("request", "Request");
-        nameMap.put("respond", "Respond");
-        nameMap.put("return", "Return");
-
+        Map<String, Controller> controllerMap = Server.getTransactionBinding(sessionId).getControllers();
+        Map<String, String> nameMap = Server.getTransactionBinding(sessionId).getNames();
 
         if (controller.length() == 0) {
             StringBuilder response = new StringBuilder();

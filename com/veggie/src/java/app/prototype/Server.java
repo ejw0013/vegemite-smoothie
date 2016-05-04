@@ -6,12 +6,39 @@ import java.net.InetSocketAddress;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.veggie.src.java.core.Account;
+import com.veggie.src.java.core.account.employee.LibrarianAccount;
+import com.veggie.src.java.core.account.patron.FacultyAccount;
+
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 import com.sun.net.httpserver.HttpExchange;
 
 public class Server {
+
+    private static Map<Integer, Account> sessionUsers;
+    private static Map<Integer, ControllerBinding> accountBindings;
+    private static Map<Integer, ControllerBinding> mediaBindings;
+    private static Map<Integer, ControllerBinding> transactionBindings;
+    private static int sessionNumber;
+
+
     public static void main(String[] args) throws Exception {
+        sessionNumber = 0;
+        sessionUsers = new HashMap<>();
+        accountBindings = new HashMap<>();
+        mediaBindings = new HashMap<>();
+        transactionBindings = new HashMap<>();
+
+        Account adminAccount = new LibrarianAccount("Admin", "(555) 555-555", 0, 12345, "password");
+
+        sessionUsers.put(1, adminAccount);
+        int p = adminAccount.getPermissions();
+        accountBindings.put(1, ControllerBinding.createAccountBinding(p));
+        mediaBindings.put(1, ControllerBinding.createMediaBinding(p));
+        transactionBindings.put(1, ControllerBinding.createTransactionBinding(p));
+        sessionNumber++;
+
         HttpServer server = HttpServer.create(new InetSocketAddress(8080), 0);
         server.createContext("/transaction", new TransactionMenu());
         server.createContext("/media", new MediaMenu());
@@ -35,5 +62,26 @@ public class Server {
         response.append("window.location = \"/\"");
         response.append("</script></html>");
         writeResponse(httpExchange, response.toString());
+    }
+
+    public static ControllerBinding getAccountBinding(int sessionId) {
+        return accountBindings.get(sessionId);
+    }
+
+    public static ControllerBinding getMediaBinding(int sessionId) {
+        return mediaBindings.get(sessionId);
+    }
+
+    public static ControllerBinding getTransactionBinding(int sessionId) {
+        return transactionBindings.get(sessionId);
+    }
+
+    public static Account getSessionAccount(int sessionId) {
+        return sessionUsers.get(sessionId);
+    }
+
+    public static int getNextSessionNumber() {
+        sessionNumber++;
+        return sessionNumber;
     }
 }

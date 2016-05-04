@@ -35,27 +35,8 @@ public class AccountMenu implements HttpHandler {
 
     public void handleMenu(HttpExchange httpExchange, int sessionId, String controller) throws IOException {
 
-        Map<String, Controller> controllerMap = new TreeMap<>();
-        controllerMap.put("addaccount", new AddAccountController());
-        controllerMap.put("addfee", new AddFeeController());
-        controllerMap.put("deleteaccount", new DeleteAccountController());
-        controllerMap.put("editaccount", new EditAccountController());
-        controllerMap.put("lookupuser", new LookUpUserController());
-        controllerMap.put("payfee", new PayFeeController());
-        controllerMap.put("report", new ReportController());
-        controllerMap.put("searchuser", new SearchUserController());
-        controllerMap.put("suspendaccount", new SuspendAccountController());
-
-        Map<String, String> nameMap = new HashMap<>();
-        nameMap.put("addaccount", "Add Account");
-        nameMap.put("addfee", "Add Fee");
-        nameMap.put("deleteaccount", "Delete Account");
-        nameMap.put("editaccount", "Edit Account");
-        nameMap.put("lookupuser", "Look Up User");
-        nameMap.put("payfee", "Pay Fee");
-        nameMap.put("report", "Generate Report");
-        nameMap.put("searchuser", "Search Users");
-        nameMap.put("suspendaccount", "Suspend Account");
+        Map<String, Controller> controllerMap = Server.getAccountBinding(sessionId).getControllers();
+        Map<String, String> nameMap = Server.getAccountBinding(sessionId).getNames();
 
         if (controller.length() == 0) {
             StringBuilder response = new StringBuilder();
