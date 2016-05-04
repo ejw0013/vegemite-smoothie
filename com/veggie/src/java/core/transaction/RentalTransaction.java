@@ -1,4 +1,4 @@
-package com.veggie.src.java.core.transactions;
+package com.veggie.src.java.core.transaction;
 
 import com.veggie.src.java.core.Transaction;
 import com.veggie.src.java.core.account.PatronAccount;

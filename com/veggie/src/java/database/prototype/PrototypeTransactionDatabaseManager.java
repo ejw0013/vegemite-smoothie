@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.ArrayList;
 
 import com.veggie.src.java.core.Transaction;
-import com.veggie.src.java.core.transactions.ReservationTransaction;
-import com.veggie.src.java.core.transactions.RentalTransaction;
+import com.veggie.src.java.core.transaction.ReservationTransaction;
+import com.veggie.src.java.core.transaction.RentalTransaction;
 import com.veggie.src.java.core.Account;
 import com.veggie.src.java.database.TransactionDatabaseManager;
 import com.veggie.src.java.core.media.MediaItem;

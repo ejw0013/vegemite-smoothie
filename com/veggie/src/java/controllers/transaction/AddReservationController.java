@@ -5,7 +5,7 @@ import com.veggie.src.java.controllers.Controller;
 import com.veggie.src.java.core.media.MediaItem;
 import com.veggie.src.java.core.media.MediaTitle;
 import com.veggie.src.java.core.account.PatronAccount;
-import com.veggie.src.java.core.transactions.ReservationTransaction;
+import com.veggie.src.java.core.transaction.ReservationTransaction;
 import com.veggie.src.java.form.Form;
 import com.veggie.src.java.form.AbstractFormBuilder;
 import com.veggie.src.java.form.AbstractFormBuilderFactory;

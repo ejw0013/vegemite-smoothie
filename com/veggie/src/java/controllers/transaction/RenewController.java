@@ -13,7 +13,7 @@ import com.veggie.src.java.database.AbstractDatabaseManagerFactory;
 import com.veggie.src.java.database.TransactionDatabaseManager;
 import com.veggie.src.java.database.AccountDatabaseManager;
 import com.veggie.src.java.database.ItemDatabaseManager;
-import com.veggie.src.java.core.transactions.RentalTransaction;
+import com.veggie.src.java.core.transaction.RentalTransaction;
 
 public class RenewController implements Controller
 {

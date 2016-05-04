@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.veggie.src.java.core.media.MediaItem;
 import com.veggie.src.java.core.account.PatronAccount;
-import com.veggie.src.java.core.transactions.RentalTransaction;
+import com.veggie.src.java.core.transaction.RentalTransaction;
 import com.veggie.src.java.controllers.Controller;
 import com.veggie.src.java.form.Form;
 import com.veggie.src.java.form.AbstractFormBuilder;

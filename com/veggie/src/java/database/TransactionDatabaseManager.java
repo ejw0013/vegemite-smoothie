@@ -3,7 +3,7 @@ package com.veggie.src.java.database;
 import java.util.List;
 
 import com.veggie.src.java.core.Transaction;
-import com.veggie.src.java.core.transactions.ReservationTransaction;
+import com.veggie.src.java.core.transaction.ReservationTransaction;
 import com.veggie.src.java.core.Account;
 
 public interface TransactionDatabaseManager extends DatabaseManager {
