@@ -21,9 +21,9 @@ public class EditAccountController implements Controller {
       notification = null;
       AbstractFormBuilder builder = AbstractFormBuilderFactory.getInstance().createFormBuilder();
       builder.addField("Library ID of Account to Edit");
-      builder.addField("username");
-      builder.addField("password");
-      builder.addField("contactInformation");
+      builder.addField("New Username");
+      builder.addField("New Password");
+      builder.addField("New Contact Information");
       editAccountForm = builder.getResult();
       manager = AbstractDatabaseManagerFactory.getInstance().createAccountDatabaseManager();
    }
@@ -34,12 +34,17 @@ public class EditAccountController implements Controller {
 
    public Notification submitForm(Form form) {
       editAccountForm = form;
-      //List<String> formData = editAccountForm.getData();
-      //getuser
-      //LookUpUserController lookUp = new LookUpUserController();
-      //Account user = lookUp.lookUpUser(Integer.parseInt(formData.get(0)));
+      List<String> formData = editAccountForm.getData();
       //edit the user
-      manager.edit(Integer.parseInt(editAccountForm.getData().get(0)), editAccountForm.getFieldNames(), editAccountForm.getData()); //need to update
-      return null;
+      ArrayList<String> fields = new ArrayList<String>(3);
+      fields.set(0, "username");
+      fields.set(1, "password");
+      fields.set(2, "contactInformation");
+      ArrayList<String> fieldData = new ArrayList<String>(3);
+      fields.set(0, formData.get(1));
+      fields.set(1, formData.get(2));
+      fields.set(2, formData.get(3));
+      manager.edit(Integer.parseInt(editAccountForm.getData().get(0)), fields, formData);
+      return null; //notificatons
    }
 }

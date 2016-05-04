@@ -32,10 +32,8 @@ public class SuspendAccountController implements Controller {
    public Notification submitForm(Form form) {
       suspendAccountForm = form;
       List<String> formData = suspendAccountForm.getData();
-      //get user
-      //LookUpUserController lookUp = new LookUpUserController();
-      //Account user = lookUp.lookUpUser(Integer.parseInt(formData.get(0)));
       //suspend the user
-      return null;
+      manager.suspend(Integer.parseInt(formData.get(0)));
+      return null; //notification
    }
 }
