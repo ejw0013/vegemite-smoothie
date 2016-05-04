@@ -6,6 +6,7 @@ import java.net.InetSocketAddress;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.LinkedHashMap;
 
 import com.veggie.src.java.core.Account;
 import com.veggie.src.java.core.account.employee.LibrarianAccount;
@@ -87,7 +88,7 @@ public class Server {
     }
 
     public static Map<String, String> queryToMap(String query) {
-        Map<String, String> result = new TreeMap<>();
+        Map<String, String> result = new LinkedHashMap<>();
         for (String param : query.split("&")) {
             String pair[] = param.split("=");
             if (pair.length > 1) {

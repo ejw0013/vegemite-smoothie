@@ -18,6 +18,7 @@ public class PrototypeDB {
 
   private int accountId;
   private int transactionId;
+  private int itemId;
 
   public PrototypeDB() {
     accountId = 0;
@@ -62,6 +63,14 @@ public class PrototypeDB {
 
   public void setTransactionId(int transactionId) {
       this.transactionId = transactionId;
+  }
+
+  public int getItemId() {
+      return itemId;
+  }
+
+  public void setItemId(int itemId) {
+      this.itemId = itemId;
   }
 
 }

@@ -62,6 +62,7 @@ public class AddReservationController implements Controller
         notification = AbstractNotificationFactory.getInstance().createSuccessNotification("Reservation Added!");
       transactionDBManager.addTransaction(res);
       }catch(Exception e){
+         e.printStackTrace();
       	System.out.println("Error: incorrect form data");
         return AbstractNotificationFactory.getInstance().createErrorNotification("Incorrect userID or itemID");
       }

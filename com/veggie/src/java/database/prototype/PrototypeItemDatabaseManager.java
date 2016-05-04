@@ -14,7 +14,14 @@ public class PrototypeItemDatabaseManager extends PrototypeDatabaseManager imple
     }
 
     public void addItem(MediaItem item) {
-        db.getItemTable().put(item.getId(), item);
+        int id = db.getItemId() + 1;
+        db.setItemId(id);
+        item.setId(id);
+        db.getItemTable().put(id, item);
+        System.out.println("LISTING!");
+        for (Integer i : db.getItemTable().keySet()) {
+            System.out.println(id + ": " + db.getItemTable().get(i));
+        }
     }
 
     public void removeItem(int itemId){

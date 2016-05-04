@@ -47,23 +47,23 @@ public class AddAccountController implements Controller {
       addAccountForm = form;
       List<String> formData = addAccountForm.getData();
       String accountType = formData.get(0);
-      if (accountType == "AssistantAccount") {
+      if (accountType.equals("AssistantAccount")) {
          AssistantAccount newUser = new AssistantAccount(formData.get(1), formData.get(3), 0, Integer.parseInt(formData.get(4)), formData.get(2));
          manager.add(newUser);
       }
-      else if (accountType == "LibrarianAccount") {
+      else if (accountType.equals("LibrarianAccount")) {
          LibrarianAccount newUser = new LibrarianAccount(formData.get(1), formData.get(3), 0, Integer.parseInt(formData.get(4)), formData.get(2));
          manager.add(newUser);
       }
-      else if (accountType == "GraduateStudentAccount") {
+      else if (accountType.equals("GraduateStudentAccount")) {
          GraduateStudentAccount newUser = new GraduateStudentAccount(formData.get(1), formData.get(3), 0, Integer.parseInt(formData.get(5)), formData.get(2));
          manager.add(newUser);
       }
-      else if (accountType == "FacultyAccount") {
+      else if (accountType.equals("FacultyAccount")) {
          FacultyAccount newUser = new FacultyAccount(formData.get(1), formData.get(3), 0, Integer.parseInt(formData.get(6)), formData.get(2));
          manager.add(newUser);
       }
-      else if (accountType == "UndergraduateStudentAccount") {
+      else if (accountType.equals("UndergraduateStudentAccount")) {
          UndergraduateStudentAccount newUser = new UndergraduateStudentAccount(formData.get(1), formData.get(3), 0, Integer.parseInt(formData.get(5)), formData.get(2));
          manager.add(newUser);
       }
@@ -74,8 +74,8 @@ public class AddAccountController implements Controller {
       notification = AbstractNotificationFactory.getInstance().createSuccessNotification("Account added!");
       return notification;
    }
-   
+
    public void respondToNotification(Notification notification) {
-      
+
    }
 }

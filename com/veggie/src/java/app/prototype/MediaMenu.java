@@ -13,6 +13,8 @@ import com.veggie.src.java.form.Form;
 import com.veggie.src.java.form.PrototypeForm;
 import com.veggie.src.java.controllers.Controller;
 import com.veggie.src.java.controllers.media.*;
+import com.veggie.src.java.notification.Notification;
+import com.veggie.src.java.notification.AbstractNotificationFactory;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
@@ -72,7 +74,6 @@ public class MediaMenu implements HttpHandler {
                 response.append(c.activate().render(uri));
                 Server.writeResponse(httpExchange, response.toString());
             } else if (stepNo == 1){
-                System.err.println("STEP 1");
                 Controller c = controllerMap.get(controller);
                 Scanner queryScanner = new Scanner(httpExchange.getRequestBody());
                 String query = queryScanner.nextLine();
@@ -84,8 +85,20 @@ public class MediaMenu implements HttpHandler {
                     fieldData.add(fieldEntry);
                 }
                 Form f = new PrototypeForm(fieldNames, fieldData);
-                System.err.println("LEAVE STEP 1");
-                Server.writeResponse(httpExchange, "PENDING");
+                String homeUri = HANDLE_PATH + sessionId + "/";
+                String continueUri = httpExchange.getRequestURI().toString();
+                Server.writeResponse(httpExchange, c.submitForm(f).render(homeUri, continueUri));
+            } else if (stepNo == 2) {
+                Controller c = controllerMap.get(controller);
+                Notification n = AbstractNotificationFactory.getInstance().createSuccessNotification("Done");
+                n.submit();
+                c.respondToNotification(n);
+                String homeUri = HANDLE_PATH + sessionId + "/";
+                StringBuilder response = new StringBuilder();
+                response.append("<html><script>");
+                response.append("window.location = \"" + homeUri + "\"");
+                response.append("</script></html>");
+                Server.writeResponse(httpExchange, response.toString());
             } else {
                 Server.writeResponse(httpExchange, "INVALID STEP NUMBER");
             }

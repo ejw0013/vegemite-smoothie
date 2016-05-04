@@ -50,6 +50,7 @@ public class AddItemController implements Controller {
 	}
 
 	public void respondToNotification(Notification notif) {
+		System.out.println(notif.ok());
 		if (notif.ok()) {
 			List<String> formData = addItemForm.getData();
 			MediaTitle title = new MediaTitle(0, "", "", "", "");

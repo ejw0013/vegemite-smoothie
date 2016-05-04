@@ -13,6 +13,8 @@ import com.veggie.src.java.form.Form;
 import com.veggie.src.java.form.PrototypeForm;
 import com.veggie.src.java.controllers.transaction.*;
 import com.veggie.src.java.controllers.Controller;
+import com.veggie.src.java.notification.Notification;
+import com.veggie.src.java.notification.AbstractNotificationFactory;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
@@ -82,7 +84,19 @@ public class TransactionMenu implements HttpHandler {
                     fieldData.add(fieldEntry);
                 }
                 Form f = new PrototypeForm(fieldNames, fieldData);
-                Server.writeResponse(httpExchange, c.submitForm(f).toString());
+                String homeUri = HANDLE_PATH + sessionId + "/";
+                String continueUri = httpExchange.getRequestURI().toString();
+                Server.writeResponse(httpExchange, c.submitForm(f).render(homeUri, continueUri));
+            } else if (stepNo == 2){
+                Controller c = controllerMap.get(controller);
+                Notification n = AbstractNotificationFactory.getInstance().createSuccessNotification("Done");
+                c.respondToNotification(n);
+                String homeUri = HANDLE_PATH + sessionId + "/";
+                StringBuilder response = new StringBuilder();
+                response.append("<html><script>");
+                response.append("window.location = \"" + homeUri + "\"");
+                response.append("</script></html>");
+                Server.writeResponse(httpExchange, response.toString());
             } else {
                 Server.writeResponse(httpExchange, "INVALID STEP NUMBER");
             }
