@@ -16,7 +16,7 @@ public class ReportController implements Controller {
    private Notification notification;
    private Form reportForm;
    private AccountDatabaseManager manager;
-   
+
    public ReportController() {
       notification = null;
       AbstractFormBuilder builder = AbstractFormBuilderFactory.getInstance().createFormBuilder();
@@ -25,7 +25,7 @@ public class ReportController implements Controller {
       manager = AbstractDatabaseManagerFactory.getInstance().createAccountDatabaseManager();
    }
 
-   public Form report() {
+   public Form activate() {
       return reportForm;
    }
 
@@ -40,7 +40,7 @@ public class ReportController implements Controller {
       else report += "Account Status: Suspended\n";
       report += "Contact Information: " + user.getContactInformation() + "\n";
       report += "Library ID Number: " + user.getId() + "\n";
-      //if (accountType == 
+      //if (accountType ==
       return notification;
    }
 }

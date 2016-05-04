@@ -25,8 +25,8 @@ public class PayFeeController implements Controller {
       payFeeForm = builder.getResult();
       manager = AbstractDatabaseManagerFactory.getInstance().createAccountDatabaseManager();
    }
-   
-   public Form payFee() {
+
+   public Form activate() {
       return payFeeForm;
    }
 

@@ -23,7 +23,7 @@ public class CancelReservationController implements Controller
     form = formBuilder.getResult();
   }
 
-  public Form createForm()
+  public Form activate()
   {
     return form;
   }
@@ -41,7 +41,7 @@ public class CancelReservationController implements Controller
       }catch(Exception e){
       	System.out.println("Error: incorrect form data");
       }
-      
+
       return notification;   //???????
   }
 }

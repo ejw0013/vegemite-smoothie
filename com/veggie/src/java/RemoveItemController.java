@@ -8,17 +8,17 @@ public class RemoveItemController implements Controller {
 	//Instance Variables
 	private int itemID;
 	private Notification notification;
-	
+
 	//Methods
 	public RemoveItemController(int id) {
 		itemID = id;
 	}
-	
-	public Notification clickRemoveItemButton() {
+
+	public Form activate() {
 		//TO DO
-		return notification;
+		return null;
 	}
-	
+
 	public void respondToNotification(Notification notif) {
 		//TO DO
 	}

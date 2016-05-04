@@ -40,7 +40,7 @@ public class AddAccountController implements Controller {
       manager = AbstractDatabaseManagerFactory.getInstance().createAccountDatabaseManager();
    }
 
-   public Form clickAccountButton() {
+   public Form activate() {
       return addAccountForm;
    }
    //fields: accounttype, username, password, contactinfo, employeeid, studentid, facultyid
@@ -50,7 +50,7 @@ public class AddAccountController implements Controller {
       String accountType = formData.get(0);
       if (accountType == "AssistantAccount") {
          AssistantAccount newUser = new AssistantAccount(formData.get(1), formData.get(3), 0, Integer.parseInt(formData.get(4)), formData.get(2));
-         manager.add(newUser); 
+         manager.add(newUser);
       }
       else if (accountType == "LibrarianAccount") {
          LibrarianAccount newUser = new LibrarianAccount(formData.get(1), formData.get(3), 0, Integer.parseInt(formData.get(4)), formData.get(2));
@@ -70,7 +70,7 @@ public class AddAccountController implements Controller {
       }
       else {
          System.out.println("Error: invalid account type");
-      } 
+      }
       return notification;   //???????
    }
 

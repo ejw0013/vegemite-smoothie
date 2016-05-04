@@ -26,7 +26,7 @@ public class CheckoutController implements Controller
     form = formBuilder.getResult();
   }
 
-  public Form createForm()
+  public Form activate()
   {
     return form;
   }

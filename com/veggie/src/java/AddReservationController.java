@@ -26,11 +26,11 @@ public class AddReservationController implements Controller
     form = formBuilder.getResult();
   }
 
-  public Form createForm()
+  public Form activate()
   {
     return form;
   }
-  
+
     public Notification submitForm()
   {
       List<String> formData = form.getData();
@@ -51,7 +51,7 @@ public class AddReservationController implements Controller
       }catch(Exception e){
       	System.out.println("Error: incorrect form data");
       }
-      
+
       return notification;   //???????
   }
 

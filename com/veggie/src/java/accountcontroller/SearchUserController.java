@@ -18,7 +18,7 @@ public class SearchUserController implements Controller {
    private Notification notification;
    private Form searchUserForm;
    private AccountDatabaseManager manager;
-   
+
    public SearchUserController() {
       notification = null;
       AbstractFormBuilder builder = AbstractFormBuilderFactory.getInstance().createFormBuilder();
@@ -27,7 +27,7 @@ public class SearchUserController implements Controller {
       manager = AbstractDatabaseManagerFactory.getInstance().createAccountDatabaseManager();
    }
 
-   public Form findUser() {
+   public Form activate () {
       return searchUserForm;
    }
 

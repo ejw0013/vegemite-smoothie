@@ -22,11 +22,11 @@ public class ReturnController implements Controller
     form = formBuilder.getResult();
   }
 
-  public Form createForm()
+  public Form activate()
   {
     return form;
   }
-  
+
     public Notification submitForm()
   {
       List<String> formData = form.getData();
@@ -38,7 +38,7 @@ public class ReturnController implements Controller
       }catch(Exception e){
       	System.out.println("Error: incorrect form data");
       }
-      
+
       return notification;   //???????
   }
 

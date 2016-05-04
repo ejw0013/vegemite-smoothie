@@ -28,7 +28,7 @@ public class EditAccountController implements Controller {
       manager = AbstractDatabaseManagerFactory.getInstance().createAccountDatabaseManager();
    }
 
-   public Form clickEditAccountButton() {
+   public Form activate() {
       return editAccountForm;
    }
 

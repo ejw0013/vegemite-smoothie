@@ -25,7 +25,7 @@ public class SuspendAccountController implements Controller {
       manager = AbstractDatabaseManagerFactory.getInstance().createAccountDatabaseManager();
    }
 
-   public Form clickSuspendAccountButton() {
+   public Form activate() {
       return suspendAccountForm;
    }
 

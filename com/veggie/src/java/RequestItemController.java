@@ -8,7 +8,7 @@ public class RequestItemController implements Controller {
 	//Instance Variables
 	private Notification notification;
 	private Form requestItemForm;
-	
+
 	//Methods
 	public RequestItemController() {
 		AbstractFormBuilder builder = AbstractFormBuilderFactory.getInstance().createFormBuilder();
@@ -16,20 +16,20 @@ public class RequestItemController implements Controller {
 		builder.addField("Description");
 		requestItemForm = builder.getResult();
 	}
-	
-	public Form clickRequestItemButton() {
+
+	public Form activate() {
 		//TO DO
 		return null;
 	}
-	
+
 	public Notification submitForm(Form form) {
 		//TO DO
 		return null;
 	}
-	
+
 	public void respondToNotification(Notification notif) {
 		//TO DO
 	}
-	
+
 
 }

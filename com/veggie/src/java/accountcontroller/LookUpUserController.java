@@ -16,7 +16,7 @@ public class LookUpUserController implements Controller {
    private Form lookUpForm;
    private Notification notification;
    private AccountDatabaseManager manager;
-   
+
    public LookUpUserController() {
       notification = null;
       AbstractFormBuilder builder = AbstractFormBuilderFactory.getInstance().createFormBuilder();
@@ -28,8 +28,8 @@ public class LookUpUserController implements Controller {
    /*public Form clickLookUpUser() {
       return lookUpForm;
    }*/
-   
-   public Form lookUpUser() { //Account lookUpUser(int idNum) {
+
+   public Form activate() { //Account lookUpUser(int idNum) {
       //Account user = manager.getUser(idNum);
       return lookUpForm;
    }

@@ -16,7 +16,7 @@ public class DeleteAccountController implements Controller {
    private Form deleteAccountForm;
    private Notification notification;
    private AccountDatabaseManager manager;
-   
+
    public DeleteAccountController() {
       notification = null;
       AbstractFormBuilder builder = AbstractFormBuilderFactory.getInstance().createFormBuilder();
@@ -25,7 +25,7 @@ public class DeleteAccountController implements Controller {
       manager = AbstractDatabaseManagerFactory.getInstance().createAccountDatabaseManager();
    }
 
-   public Form clickDeleteAccountButton() {
+   public Form activate() {
       return deleteAccountForm;
    }
 

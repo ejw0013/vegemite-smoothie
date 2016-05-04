@@ -26,7 +26,7 @@ public class AddFeeController implements Controller {
       manager = AbstractDatabaseManagerFactory.getInstance().createAccountDatabaseManager();
    }
 
-   public Form addFee() {
+   public Form activate() {
       return addFeeForm;
    }
 

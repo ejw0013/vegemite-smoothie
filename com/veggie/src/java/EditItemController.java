@@ -13,7 +13,7 @@ public class EditItemController implements Controller {
 	private Notification notification;
 	private Form editItemForm;
 	private ItemDatabaseManager manager;
-	
+
 	//Methods
 	public EditItemController(int id) {
 		itemID = id;
@@ -22,17 +22,17 @@ public class EditItemController implements Controller {
 		editItemForm = builder.getResult();
 		manager = AbstractDatabaseManagerFactory.getInstance().createItemDatabaseManager();
 	}
-	
-	public Form clickEditItemButton() {
+
+	public Form activate() {
 		return editItemForm;
 	}
-	
+
 	public Notification submitForm(Form form) {
 		List<String> formData = editItemForm.getData();
 		//TO DO
 		return notification;
 	}
-	
+
 	public void respondToNotification(Notification notif) {
 		//TO DO
 	}
