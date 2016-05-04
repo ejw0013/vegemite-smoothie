@@ -39,7 +39,10 @@ public class ReportController implements Controller {
       else report += "Account Status: Suspended\n";
       report += "Contact Information: " + user.getContactInformation() + "\n";
       report += "Library ID Number: " + user.getId() + "\n";
-      //if (accountType ==
+      //if (accountType == "AssistantAccount" || accountType = "LibrarianAccount")
+         //report += "Employee ID Number: " + user.getEmployeeID() + "\n";
+      //if (accountType == "FacultyAccount") report += "Faculty ID Number: " + user.getFacultyID() + "\n";
+      
       return notification;
    }
 }
