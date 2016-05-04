@@ -7,6 +7,7 @@ import com.veggie.src.java.core.media.MediaItem;
 public interface ItemDatabaseManager extends DatabaseManager {
   public void addItem(MediaItem item);
   public MediaItem getItem(int itemId);
+  public void removeItem(int itemId);
   public boolean isReservable(int itemId);
   public void markAvailable(int itemId);
   public void markReserved(int itemId);

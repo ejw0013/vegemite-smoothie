@@ -17,6 +17,9 @@ public class PrototypeItemDatabaseManager extends PrototypeDatabaseManager imple
         db.getItemTable().put(item.getId(), item);
     }
 
+    public void removeItem(int itemId){
+        db.getItemTable().remove(itemId);
+    }
     public MediaItem getItem(int itemId) {
         return db.getItemTable().get(itemId);
     }
