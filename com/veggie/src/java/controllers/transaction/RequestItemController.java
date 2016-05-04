@@ -41,7 +41,7 @@ public class RequestItemController implements Controller {
 		} else {
 			notification = AbstractNotificationFactory.getInstance().createConfirmNotification("Proceed with item request?");
 		}
-		return null;
+		return notification;
 	}
 
 	public void respondToNotification(Notification notif) {
