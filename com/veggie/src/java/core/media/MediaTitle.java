@@ -21,6 +21,7 @@ public class MediaTitle{
 		this.id = id;
 		this.ISBN = ISBN;
 		this.author = author;
+		this.title = title;
 		this.description = description;
 		fieldMap = new HashMap<>();
 		fieldMap.put("ISBN", ISBN);
@@ -28,6 +29,10 @@ public class MediaTitle{
 		fieldMap.put("id", id + "");
 		fieldMap.put("author", author);
 		fieldMap.put("description", description);
+	}
+
+	public String toString() {
+		return ISBN + " " + title + " " + author + " " + description;
 	}
 
 	public int getId(){

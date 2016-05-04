@@ -60,6 +60,9 @@ public class ControllerBinding {
         Map<String, Controller> cMap = new TreeMap<>();
         Map<String, String> nMap = new HashMap<>();
 
+        cMap.put("search", new SearchTitlesController());
+        nMap.put("search", "Search Titles");
+
         if (permissions == Account.LIBRARIAN) {
             cMap.put("edititem", new EditItemController());
             cMap.put("removeitem", new RemoveItemController());
