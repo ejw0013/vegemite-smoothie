@@ -94,12 +94,16 @@ public class PrototypeTransactionDatabaseManager extends PrototypeDatabaseManage
     }
 
     public void finalizeReservation(int userId, int itemId) {
-        for(Integer transactionId : db.getTransactionTable().keySet()) {
-            Transaction transaction = db.getTransactionTable().get(transactionId);
-            if(transaction.getPatronAccount().getId() == userId && transaction.getId() == itemId){
-                if(transaction instanceof ReservationTransaction)
-                    transaction.resolve();
+        try {
+            for (Integer transactionId : db.getTransactionTable().keySet()) {
+                Transaction transaction = db.getTransactionTable().get(transactionId);
+                if (transaction.getPatronAccount().getId() == userId && transaction.getId() == itemId) {
+                    if (transaction instanceof ReservationTransaction)
+                        transaction.resolve();
+                }
             }
+        }catch(Exception e){
+            e.printStackTrace();
         }
     }
 

@@ -72,21 +72,32 @@ public class TransactionMenu implements HttpHandler {
                 StringBuilder response = new StringBuilder();
                 response.append(c.activate().render(uri));
                 Server.writeResponse(httpExchange, response.toString());
+                System.out.println("DONE WITH STEP 0");
             } else if (stepNo == 1){
-                Controller c = controllerMap.get(controller);
-                Scanner queryScanner = new Scanner(httpExchange.getRequestBody());
-                String query = queryScanner.nextLine();
-                Map<String, String> formResponse = Server.queryToMap(query);
-                List<String> fieldNames = new ArrayList<>(), fieldData = new ArrayList<>();
-                for (String fieldName : formResponse.keySet()) {
-                    String fieldEntry = formResponse.get(fieldName);
-                    fieldNames.add(fieldName);
-                    fieldData.add(fieldEntry);
+                System.out.println("STARTING STEP 1");
+                try {
+                    Controller c = controllerMap.get(controller);
+                    Scanner queryScanner = new Scanner(httpExchange.getRequestBody());
+                    String query = "";
+                    if (queryScanner.hasNext()) {
+                        query = queryScanner.nextLine();
+                    }
+                    Map<String, String> formResponse = Server.queryToMap(query);
+                    List<String> fieldNames = new ArrayList<>(), fieldData = new ArrayList<>();
+                    for (String fieldName : formResponse.keySet()) {
+                        String fieldEntry = formResponse.get(fieldName);
+                        fieldNames.add(fieldName);
+                        fieldData.add(fieldEntry);
+                    }
+                    Form f = new PrototypeForm(fieldNames, fieldData);
+                    String homeUri = HANDLE_PATH + sessionId + "/";
+                    String continueUri = httpExchange.getRequestURI().toString();
+                    System.out.println("DONE WITH STEP 1");
+                    Server.writeResponse(httpExchange, c.submitForm(f).render(homeUri, continueUri));
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-                Form f = new PrototypeForm(fieldNames, fieldData);
-                String homeUri = HANDLE_PATH + sessionId + "/";
-                String continueUri = httpExchange.getRequestURI().toString();
-                Server.writeResponse(httpExchange, c.submitForm(f).render(homeUri, continueUri));
+
             } else if (stepNo == 2){
                 Controller c = controllerMap.get(controller);
                 Notification n = AbstractNotificationFactory.getInstance().createSuccessNotification("Done");
