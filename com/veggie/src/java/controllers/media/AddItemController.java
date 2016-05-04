@@ -6,6 +6,7 @@ import com.veggie.src.java.database.*;
 import com.veggie.src.java.core.*;
 import com.veggie.src.java.core.media.MediaItem;
 import com.veggie.src.java.core.media.MediaTitle;
+import com.veggie.src.java.controllers.Controller;
 
 import java.util.List;
 import java.util.Set;
@@ -29,11 +30,12 @@ public class AddItemController implements Controller {
 		manager = AbstractDatabaseManagerFactory.getInstance().createTitleDatabaseManager();
 	}
 	
-	public Form clickAddItemButton() {
+	public Form activate() {
 	  return addItemForm;
 	}
 	
-	public Notification submitForm() {
+	public Notification submitForm(Form form) {
+		addItemForm = form;
 		List<String> formData = addItemForm.getData();
 		titleStatus = manager.checkTitle(formData.get(0), addItemForm.getFieldNames(), formData);
 		if (titleStatus == MediaTitle.INVALID_TITLE) {
@@ -44,22 +46,20 @@ public class AddItemController implements Controller {
 		return notification;
 	}
 	
-	public void respondToNotification() {
-		if (notification instanceof AbstractErrorNotification) {
-			if (notification.ok()) {
-				List<String> formData = addItemForm.getData();
-				MediaTitle title = new MediaTitle(0, "", "", "", "");
-				if (titleStatus == MediaTitle.NEW_TITLE) {
-					title = new MediaTitle(0, formData.get(0), formData.get(1), formData.get(2), formData.get(3));
-					manager.addTitle(formData.get(0), title);
-				} else if (titleStatus == MediaTitle.EXISTING_TITLE) {
-					Set<MediaTitle> titleResults = manager.getMatches(addItemForm.getFieldNames(), formData);
-					for (MediaTitle t : titleResults) {
-						title = t;
-					}
+	public void respondToNotification(Notification notif) {
+		if (notif.ok()) {
+			List<String> formData = addItemForm.getData();
+			MediaTitle title = new MediaTitle(0, "", "", "", "");
+			if (titleStatus == MediaTitle.NEW_TITLE) {
+				title = new MediaTitle(0, formData.get(0), formData.get(1), formData.get(2), formData.get(3));
+				manager.addTitle(formData.get(0), title);
+			} else if (titleStatus == MediaTitle.EXISTING_TITLE) {
+				Set<MediaTitle> titleResults = manager.getMatches(addItemForm.getFieldNames(), formData);
+				for (MediaTitle t : titleResults) {
+					title = t;
 				}
-				MediaItem newItem = new MediaItem(0, title);
 			}
+			MediaItem newItem = new MediaItem(0, title);
 		}
 	}
 
