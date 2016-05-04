@@ -16,7 +16,8 @@ public class AddItemController implements Controller {
 	//Instance Variables
 	private Notification notification;
 	private Form addItemForm;
-	private TitleDatabaseManager manager;
+	private TitleDatabaseManager titleManager;
+	private ItemDatabaseManager itemManager;
 	private int titleStatus;
 
 	//Methods
@@ -27,7 +28,8 @@ public class AddItemController implements Controller {
 		builder.addField("Author");
 		builder.addField("Description");
 		addItemForm = builder.getResult();
-		manager = AbstractDatabaseManagerFactory.getInstance().createTitleDatabaseManager();
+		titleManager = AbstractDatabaseManagerFactory.getInstance().createTitleDatabaseManager();
+		itemManager = AbstractDatabaseManagerFactory.getInstance().createItemDatabaseManager();
 	}
 
 
@@ -38,7 +40,7 @@ public class AddItemController implements Controller {
 	public Notification submitForm(Form form) {
 		addItemForm = form;
 		List<String> formData = addItemForm.getData();
-		titleStatus = manager.checkTitle(formData.get(0), addItemForm.getFieldNames(), formData);
+		titleStatus = titleManager.checkTitle(formData.get(0), addItemForm.getFieldNames(), formData);
 		if (titleStatus == MediaTitle.INVALID_TITLE) {
 			notification = AbstractNotificationFactory.getInstance().createErrorNotification("Invalid Title: Media title exists, but fields do not match");
 		} else {
@@ -53,14 +55,15 @@ public class AddItemController implements Controller {
 			MediaTitle title = new MediaTitle(0, "", "", "", "");
 			if (titleStatus == MediaTitle.NEW_TITLE) {
 				title = new MediaTitle(0, formData.get(0), formData.get(1), formData.get(2), formData.get(3));
-				manager.addTitle(formData.get(0), title);
+				titleManager.addTitle(formData.get(0), title);
 			} else if (titleStatus == MediaTitle.EXISTING_TITLE) {
-				Set<MediaTitle> titleResults = manager.getMatches(addItemForm.getFieldNames(), formData);
+				Set<MediaTitle> titleResults = titleManager.getMatches(addItemForm.getFieldNames(), formData);
 				for (MediaTitle t : titleResults) {
 					title = t;
 				}
 			}
 			MediaItem newItem = new MediaItem(0, title);
+			itemManager.addItem(newItem);
 		}
 	}
 
