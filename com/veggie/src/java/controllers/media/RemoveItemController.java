@@ -34,7 +34,7 @@ public class RemoveItemController implements Controller {
 
 	public void respondToNotification(Notification notif) {
 		if (notif.ok()) {
-			List<String> formData = editItemForm.getData();
+			List<String> formData = removeItemForm.getData();
 			manager.removeItem(Integer.parseInt(formData.get(0)));
 		}
 	}
