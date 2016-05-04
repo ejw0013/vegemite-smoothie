@@ -37,4 +37,8 @@ public class SearchUserController implements Controller {
       List<Account> matchingUsers = manager.getMatchingUsers(fields, formData);
       return notification; //notification
    }
+   
+   public void respondToNotification(Notification notification) {
+   
+   }
 }

@@ -79,4 +79,8 @@ public class ReportController implements Controller {
       }
       return report;
    }
+   
+   public void respondToNotification(Notification notification) {
+   
+   }
 }

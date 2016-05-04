@@ -34,4 +34,8 @@ public class PayFeeController implements Controller {
       double change = manager.payFee(Integer.parseInt(formData.get(0)), Double.parseDouble(formData.get(1)));
       return notification; //notifications
    }
+   
+   public void respondToNotification(Notification notification) {
+   
+   }
 }

@@ -39,4 +39,8 @@ public class LookUpUserController implements Controller {
       Account user = manager.getUser(Integer.parseInt(formData.get(0)));
       return notification; //???
    }
+   
+   public void respondToNotification(Notification notification) {
+   
+   }
 }

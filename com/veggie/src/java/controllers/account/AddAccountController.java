@@ -71,5 +71,8 @@ public class AddAccountController implements Controller {
       }
       return notification;   //???????
    }
-
+   
+   public void respondToNotification(Notification notification) {
+   
+   }
 }

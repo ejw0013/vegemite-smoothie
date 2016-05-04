@@ -37,4 +37,8 @@ public class DeleteAccountController implements Controller {
       manager.delete(Integer.parseInt(formData.get(0)));
       return null;
    }
+   
+   public void respondToNotification(Notification notification) {
+   
+   }
 }

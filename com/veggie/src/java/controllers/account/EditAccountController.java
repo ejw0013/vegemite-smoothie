@@ -46,4 +46,8 @@ public class EditAccountController implements Controller {
       manager.edit(Integer.parseInt(editAccountForm.getData().get(0)), fields, formData);
       return null; //notificatons
    }
+   
+   public void respondToNotification(Notification notification) {
+   
+   }
 }

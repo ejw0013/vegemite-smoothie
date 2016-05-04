@@ -34,4 +34,8 @@ public class AddFeeController implements Controller {
       manager.addFee(Integer.parseInt(formData.get(0)), Double.parseDouble(formData.get(1)));
       return notification; //notification
    }
+   
+   public void respondToNotification(Notification notification) {
+   
+   }
 }

@@ -34,4 +34,8 @@ public class SuspendAccountController implements Controller {
       manager.suspend(Integer.parseInt(formData.get(0)));
       return null; //notification
    }
+   
+   public void respondToNotification(Notification notification) {
+   
+   }
 }
