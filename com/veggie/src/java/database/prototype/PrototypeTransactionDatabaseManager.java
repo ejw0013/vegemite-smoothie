@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import com.veggie.src.java.core.Transaction;
 import com.veggie.src.java.core.transaction.ReservationTransaction;
 import com.veggie.src.java.core.transaction.RentalTransaction;
+import com.veggie.src.java.core.transaction.RequestTransaction;
 import com.veggie.src.java.core.Account;
 import com.veggie.src.java.database.TransactionDatabaseManager;
 import com.veggie.src.java.core.media.MediaItem;
@@ -100,5 +101,21 @@ public class PrototypeTransactionDatabaseManager extends PrototypeDatabaseManage
                     transaction.resolve();
             }
         }
+    }
+
+    public List<Transaction> getRequests() {
+        List<Transaction> output = new ArrayList<>();
+        for(Integer transactionId : db.getTransactionTable().keySet()){
+            Transaction transaction = db.getTransactionTable().get(transactionId);
+            if(transaction.getStatus() == Transaction.ACTIVE){
+               if(transaction instanceof RequestTransaction) 
+                output.add(transaction);
+            }
+        }
+        return output;
+    }
+
+    public void resolveRequest(int transactionId) {
+        db.getTransactionTable().remove(transactionId);
     }
 }
