@@ -14,45 +14,51 @@ import com.veggie.src.java.database.AbstractDatabaseManagerFactory;
 import com.veggie.src.java.database.TransactionDatabaseManager;
 import com.veggie.src.java.database.AccountDatabaseManager;
 import com.veggie.src.java.database.ItemDatabaseManager;
+import com.veggie.src.java.notification.AbstractNotificationFactory;
 
 public class CheckoutController implements Controller
 {
   private AbstractFormBuilder formBuilder;
-  private Form form;
-  Notification notification;
+  private int itemid;
+  private int userid;
+  public CheckoutController(){}
 
-  public CheckoutController()
+  public Form activate()
   {
     formBuilder = AbstractFormBuilderFactory.getInstance().createFormBuilder();
     formBuilder.addField("User ID");
     formBuilder.addField("Item ID");
-    form = formBuilder.getResult();
+    return formBuilder.getResult();
   }
 
-  public Form activate()
+  public Notification submitForm(Form form)
   {
-    return form;
-  }
-
-  public Notification submitForm()
-  {
-     List<String> formData = form.getData();
-      int itemid;
-      int userid;
-      try{
-      	userid = Integer.parseInt(formData.get(0));
-      	itemid = Integer.parseInt(formData.get(1));
-         AccountDatabaseManager accountDBManager = AbstractDatabaseManagerFactory.getInstance().createAccountDatabaseManager();
-         PatronAccount patron;
-         patron = (PatronAccount)accountDBManager.getUser(userid);
-         ItemDatabaseManager itemDBManager = AbstractDatabaseManagerFactory.getInstance().createItemDatabaseManager();
-         MediaItem med = itemDBManager.getItem(itemid);
-        RentalTransaction rent = new RentalTransaction(patron, med, 0);
-      	TransactionDatabaseManager transactionDBManager = AbstractDatabaseManagerFactory.getInstance().createTransactionDatabaseManager();
-      transactionDBManager.addTransaction(rent);
-      }catch(Exception e){
-      	System.out.println("Error: incorrect form data");
+    Notification notification;
+    List<String> formData = form.getData();
+    PatronAccount patron;
+    MediaItem med;
+    try{
+      userid = Integer.parseInt(formData.get(0));
+      itemid = Integer.parseInt(formData.get(1));
+      AccountDatabaseManager accountDBManager = AbstractDatabaseManagerFactory.getInstance().createAccountDatabaseManager();
+      if(accountDBManager.getUser(userid) != null){
+        patron = (PatronAccount)accountDBManager.getUser(userid);
+      }else{
+          return AbstractNotificationFactory.getInstance().createErrorNotification("User does not exist! ");
       }
+      ItemDatabaseManager itemDBManager = AbstractDatabaseManagerFactory.getInstance().createItemDatabaseManager();
+      if(itemDBManager.getItem(itemid) != null){
+          med = itemDBManager.getItem(itemid);
+      }else{
+        return AbstractNotificationFactory.getInstance().createErrorNotification("Media does not exist!");
+      }
+      RentalTransaction rent = new RentalTransaction(patron, med, 0);
+      TransactionDatabaseManager transactionDBManager = AbstractDatabaseManagerFactory.getInstance().createTransactionDatabaseManager();
+      transactionDBManager.addTransaction(rent);
+      notification = AbstractNotificationFactory.getInstance().createSuccessNotification("Media checked out!");
+    }catch(Exception e){
+      notification = AbstractNotificationFactory.getInstance().createErrorNotification("Form data error!");
+    }
 
       return notification;   //???????
   }
