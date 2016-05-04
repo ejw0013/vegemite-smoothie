@@ -21,6 +21,7 @@ public class AssistantAccount extends EmployeeAccount {
 		sb.append("Username: " + username + " ");
 		sb.append("Account Type: " + type + " ");
 		sb.append("Library ID: " + employeeId);
+		return sb.toString();
 	}
 
 }
