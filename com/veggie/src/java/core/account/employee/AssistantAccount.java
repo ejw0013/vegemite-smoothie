@@ -19,9 +19,9 @@ public class AssistantAccount extends EmployeeAccount {
 
 	public String toString(){
 		StringBuilder sb = new StringBuilder();
-		sb.append("Username: " + username + " ");
-		sb.append("Account Type: " + type + " ");
-		sb.append("Library ID: " + employeeId);
+		sb.append("Username: " + getusername() + " ");
+		sb.append("Account Type: " + getType() + " ");
+		sb.append("Library ID: " + getEmployeeId());
 		return sb.toString();
 	}
 

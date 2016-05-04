@@ -31,6 +31,7 @@ public class SearchUserController implements Controller {
    }
 
    public Notification submitForm(Form form) {
+       try {
       searchUserForm = form;
       List<String> formData = searchUserForm.getData();
       ArrayList<String> fields = new ArrayList<String>(1);
@@ -42,10 +43,14 @@ public class SearchUserController implements Controller {
          Account user = matchingUsers.get(i);
          report += user.toString() + "\n";
       }
-      return notification; //notification
+      return AbstractNotificationFactory.getInstance().createSuccessNotification(report);
+  } catch (Exception e) {
+      e.printStackTrace();
+  }
+  return null;
    }
-   
+
    public void respondToNotification(Notification notification) {
-   
+
    }
 }

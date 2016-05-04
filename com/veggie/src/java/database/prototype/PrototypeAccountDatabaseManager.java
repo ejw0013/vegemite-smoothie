@@ -77,7 +77,6 @@ public class PrototypeAccountDatabaseManager extends PrototypeDatabaseManager im
 
     public void edit(int userId, List<String> fields, List<String> fieldData) {
         Account user = db.getAccountTable().get(userId);
-
         for (int i = 0; i < fields.size(); i++) {
             String fieldName = fields.get(i);
             String fieldEntry = fieldData.get(i);

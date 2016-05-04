@@ -48,11 +48,11 @@ public abstract class Account{
 	}
 
 	public String getContactInformation(){
-		return this.contactInformation;
+		return fields.get("contactInformation");
 	}
 
 	public String getusername(){
-		return this.username;
+		return fields.get("username");
 	}
 
 	public boolean fieldExists(String field) {

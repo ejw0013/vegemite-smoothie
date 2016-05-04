@@ -22,9 +22,9 @@ public class GraduateStudentAccount extends PatronAccount {
 
 	public String toString(){
 		StringBuilder sb = new StringBuilder();
-		sb.append("Username: " + username + " ");
-		sb.append("Account type: " + type + " ");
-		sb.append("Library ID: " + studentId);
+		sb.append("Username: " + getusername() + " ");
+		sb.append("Account type: " + getType() + " ");
+		sb.append("Library ID: " + getStudentId());
 		return sb.toString();
 	}
 

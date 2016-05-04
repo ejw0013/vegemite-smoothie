@@ -33,23 +33,28 @@ public class EditAccountController implements Controller {
    }
 
    public Notification submitForm(Form form) {
+      try {
       editAccountForm = form;
       List<String> formData = editAccountForm.getData();
       //edit the user
-      ArrayList<String> fields = new ArrayList<String>(3);
-      fields.set(0, "username");
-      fields.set(1, "password");
-      fields.set(2, "contactInformation");
-      ArrayList<String> fieldData = new ArrayList<String>(3);
-      fields.set(0, formData.get(1));
-      fields.set(1, formData.get(2));
-      fields.set(2, formData.get(3));
-      manager.edit(Integer.parseInt(editAccountForm.getData().get(0)), fields, formData);
+      ArrayList<String> fields = new ArrayList<String>();
+      fields.add("username");
+      fields.add("password");
+      fields.add("contactInformation");
+      ArrayList<String> fieldData = new ArrayList<String>();
+      fieldData.add(formData.get(1));
+      fieldData.add(formData.get(2));
+      fieldData.add(formData.get(3));
+      manager.edit(Integer.parseInt(editAccountForm.getData().get(0)), fields, fieldData);
       notification = AbstractNotificationFactory.getInstance().createSuccessNotification("Account edited!");
+  } catch (Exception e) {
+      e.printStackTrace();
+      notification = AbstractNotificationFactory.getInstance().createErrorNotification("An error occurred");
+  }
       return notification;
    }
-   
+
    public void respondToNotification(Notification notification) {
-   
+
    }
 }

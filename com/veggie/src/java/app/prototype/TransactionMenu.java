@@ -90,6 +90,7 @@ public class TransactionMenu implements HttpHandler {
             } else if (stepNo == 2){
                 Controller c = controllerMap.get(controller);
                 Notification n = AbstractNotificationFactory.getInstance().createSuccessNotification("Done");
+                n.submit();
                 c.respondToNotification(n);
                 String homeUri = HANDLE_PATH + sessionId + "/";
                 StringBuilder response = new StringBuilder();
