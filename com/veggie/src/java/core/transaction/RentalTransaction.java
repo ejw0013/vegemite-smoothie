@@ -11,12 +11,14 @@ public class RentalTransaction extends Transaction {
   private MediaItem item;
   private int numRenewals;
   private long timeDue;
+  public static long CHECKOUT_TIME = 604800;
 
   public RentalTransaction(final PatronAccount patron, final MediaItem item, final int id){
     this.item = item;
     this.patron = patron;
     this.id = id;
     this.time = Instant.now().getEpochSecond();
+    this.timeDue = time + CHECKOUT_TIME;
     status = 1;
     numRenewals = 0;
   }
@@ -34,6 +36,7 @@ public class RentalTransaction extends Transaction {
     sb.append("Rental for: ");
     sb.append(item.getTitle() + "\t");
     sb.append("Time rented: " + time + "\t");
+    sb.append("Time due: " + timeDue + "\t");
     if(status == ACTIVE){
       sb.append("Active");
     }else{
@@ -42,4 +45,7 @@ public class RentalTransaction extends Transaction {
     return sb.toString();
   }
 
+  public long getDueDate(){
+    return timeDue;
+  }
 }
