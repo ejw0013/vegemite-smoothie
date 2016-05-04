@@ -28,7 +28,7 @@ public class AddFeeController implements Controller {
       return addFeeForm;
    }
 
-   public Notification getNotification(Form form) {
+   public Notification submitForm(Form form) {
       addFeeForm = form;
       List<String> formData = form.getData();
       manager.addFee(Integer.parseInt(formData.get(0)), Double.parseDouble(formData.get(1)));

@@ -28,7 +28,7 @@ public class PayFeeController implements Controller {
       return payFeeForm;
    }
 
-   public Notification getNotification(Form form) {
+   public Notification submitForm(Form form) {
       payFeeForm = form;
       List<String> formData = payFeeForm.getData();
       double change = manager.payFee(Integer.parseInt(formData.get(0)), Double.parseDouble(formData.get(1)));

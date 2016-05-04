@@ -29,7 +29,7 @@ public class SearchUserController implements Controller {
       return searchUserForm;
    }
 
-   public Notification getNotification(Form form) {
+   public Notification submitForm(Form form) {
       searchUserForm = form;
       List<String> formData = searchUserForm.getData();
       ArrayList<String> fields = new ArrayList<String>(1);

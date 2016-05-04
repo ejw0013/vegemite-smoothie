@@ -28,7 +28,7 @@ public class ReportController implements Controller {
       return reportForm;
    }
 
-   public Notification getNotification(Form form) {
+   public Notification submitForm(Form form) {
       reportForm = form;
       List<String> formData = reportForm.getData();
       Account user = manager.getUser(Integer.parseInt(formData.get(0)));

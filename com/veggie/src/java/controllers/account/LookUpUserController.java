@@ -33,7 +33,7 @@ public class LookUpUserController implements Controller {
       return lookUpForm;
    }
 
-   public Notification getNotification(Form form) {
+   public Notification submitForm(Form form) {
       lookUpForm = form;
       List<String> formData = lookUpForm.getData();
       Account user = manager.getUser(Integer.parseInt(formData.get(0)));
