@@ -27,7 +27,7 @@ public class ReturnController implements Controller
     return form;
   }
 
-    public Notification submitForm()
+  public Notification submitForm()
   {
       List<String> formData = form.getData();
       int itemid;
@@ -40,6 +40,10 @@ public class ReturnController implements Controller
       }
 
       return notification;   //???????
+  }
+
+  public void respondToNotification(Notification notif) {
+    //TO DO
   }
 
 }

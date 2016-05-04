@@ -44,4 +44,8 @@ public class CancelReservationController implements Controller
 
       return notification;   //???????
   }
+  
+  public void respondToNotification() {
+    //TO DO
+  }
 }

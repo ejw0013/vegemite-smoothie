@@ -55,6 +55,10 @@ public class CheckoutController implements Controller
       }
 
       return notification;   //???????
-
   }
+
+  public void respondToNotification(Notification notif) {
+    //TO DO
+  }
+
 }

@@ -59,4 +59,9 @@ public class RenewController implements Controller
 
   }
 
+  public void respondToNotification(Notification notif) {
+    //TO DO
+  }
+
+
 }

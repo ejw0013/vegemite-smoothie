@@ -58,4 +58,9 @@ public class AddReservationController implements Controller
       return notification;   //???????
   }
 
+  public void respondToNotification(Notification notif) {
+    //TO DO
+  }
+
+
 }
