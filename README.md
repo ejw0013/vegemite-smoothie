@@ -4,12 +4,21 @@ COMP 3700 Software Modeling and Design Project
 
 Library System Software
 
-## Goals
+Chris Barnes
+Elijah Holt
+Mitchell Price
+Jeromy Swann
+Erich Wu
 
-1. Don't be bad
-2. Make something
+## Building
 
-## Current issues
+To build, simply run build.sh.
 
-* Notifications, controllers, and forms
+## Running
 
+To run, simply run run.sh. It will run on port 8080.
+
+## Notes
+
+The server was built following the example set at:
+http://www.rgagnon.com/javadetails/java-have-a-simple-http-server.html
