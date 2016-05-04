@@ -25,7 +25,7 @@ public class ReservationTransaction extends Transaction {
   public String toString(){
     StringBuilder sb = new StringBuilder();
     sb.append("Reservation for: ");
-    sb.append(title.getTitle().getTitle() + "\t");
+    sb.append(title.getTitle() + "\t");
     sb.append("Time submitted: " + time + "\t");
     if(status == ACTIVE){
       sb.append("Active");
