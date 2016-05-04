@@ -38,6 +38,17 @@ public class MainMenu implements HttpHandler {
         response.append("<h1>Please Log In</h1><br/>");
         response.append("<a href = \"/1\">Enter</a><br/>");
         response.append("</body></html>");
-        Server.writeResponse(httpExchange, response.toString());
+        StringBuilder sb =new StringBuilder();
+        sb.append("<html><body>");
+        sb.append("<h1>Please Log In</h1><br/>");
+        sb.append("<form method=\"post\" action=\"login/\">");
+        sb.append("Username:<br>");
+        sb.append("<input type=\"text\" name=\"username\"><br>");
+        sb.append("Password:<br>");
+        sb.append("<input type=\"password\" name=\"password\"><br>");
+        sb.append("<input type=\"submit\" value=\"Submit\">");
+        sb.append("</form>");
+        sb.append("</body></html>");
+        Server.writeResponse(httpExchange, sb.toString());
     }
 }

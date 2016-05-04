@@ -105,4 +105,14 @@ public class PrototypeAccountDatabaseManager extends PrototypeDatabaseManager im
         return change;
     }
 
+    public Account matchUsername(String username) {
+        for (Integer id : db.getAccountTable().keySet()) {
+            Account a = db.getAccountTable().get(id);
+            if (a.getusername().equals(username)) {
+                return a;
+            }
+        }
+        return null;
+    }
+
 }

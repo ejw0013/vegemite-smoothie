@@ -11,6 +11,7 @@ import java.util.LinkedHashMap;
 import com.veggie.src.java.core.Account;
 import com.veggie.src.java.core.account.employee.LibrarianAccount;
 import com.veggie.src.java.core.account.patron.FacultyAccount;
+import com.veggie.src.java.database.AbstractDatabaseManagerFactory;
 
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
@@ -32,19 +33,22 @@ public class Server {
         mediaBindings = new HashMap<>();
         transactionBindings = new HashMap<>();
 
-        Account adminAccount = new LibrarianAccount("Admin", "(555) 555-555", 0, 12345, "password");
+        Account adminAccount = new LibrarianAccount("admin", "(555) 555-555", 0, 12345, "password");
+        AbstractDatabaseManagerFactory.getInstance().createAccountDatabaseManager().add(adminAccount);
 
+/*
         sessionUsers.put(1, adminAccount);
         int p = adminAccount.getPermissions();
         accountBindings.put(1, ControllerBinding.createAccountBinding(p));
         mediaBindings.put(1, ControllerBinding.createMediaBinding(p));
         transactionBindings.put(1, ControllerBinding.createTransactionBinding(p));
-        sessionNumber++;
+        sessionNumber++; */
 
         HttpServer server = HttpServer.create(new InetSocketAddress(8080), 0);
         server.createContext("/transaction", new TransactionMenu());
         server.createContext("/media", new MediaMenu());
         server.createContext("/account", new AccountMenu());
+        server.createContext("/login", new LoginMenu());
         server.createContext("/", new MainMenu());
         server.setExecutor(null);
         server.start();
@@ -85,6 +89,16 @@ public class Server {
     public static int getNextSessionNumber() {
         sessionNumber++;
         return sessionNumber;
+    }
+
+    public static int openSession(Account acct) {
+        int p = acct.getPermissions();
+        int sNum = getNextSessionNumber();
+        sessionUsers.put(sNum, acct);
+        accountBindings.put(sNum, ControllerBinding.createAccountBinding(p));
+        mediaBindings.put(sNum, ControllerBinding.createMediaBinding(p));
+        transactionBindings.put(sNum, ControllerBinding.createTransactionBinding(p));
+        return sNum;
     }
 
     public static Map<String, String> queryToMap(String query) {

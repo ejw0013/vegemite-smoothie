@@ -8,6 +8,7 @@ public interface AccountDatabaseManager extends DatabaseManager {
   public Account getUser(int userId);
   public int getUserType(int userId);
   public List<Account> getMatchingUsers(List<String> fields, List<String> fieldData);
+  public Account matchUsername(String username);
 
   public void delete(int userId);
   public void edit(int userId, List<String> fields, List<String> fieldData);

@@ -32,10 +32,11 @@ public abstract class Account{
 		fields.put("username", username);
 		fields.put("contactInformation", contactInformation);
 		fields.put("id", id+"");
+		fields.put("password", password);
 	}
 
 	public boolean passwordMatches(final String password){
-		return this.password.equals(password);
+		return fields.get("password").equals(password);
 	}
 
 	public int getId(){
