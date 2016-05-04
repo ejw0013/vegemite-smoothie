@@ -2,11 +2,11 @@ package com.veggie.src.java.form;
 
 import java.util.List;
 
-public class TomcatForm implements Form {
+public class PrototypeForm implements Form {
   private List<String> data;
   private List<String> fieldNames;
 
-  protected TomcatForm(List<String> fieldNames, List<String> defaultData) {
+  protected PrototypeForm(List<String> fieldNames, List<String> defaultData) {
     this.fieldNames = fieldNames;
     this.data = defaultData;
   }

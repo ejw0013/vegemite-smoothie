@@ -3,11 +3,11 @@ package com.veggie.src.java.form;
 import java.util.List;
 import java.util.ArrayList;
 
-public class TomcatFormBuilder implements AbstractFormBuilder {
+public class PrototypeFormBuilder implements AbstractFormBuilder {
   private List<String> formFields;
   private List<String> defaultData;
 
-  protected TomcatFormBuilder() {
+  protected PrototypeFormBuilder() {
     formFields = new ArrayList<>();
     defaultData = new ArrayList<>();
   }
@@ -18,6 +18,6 @@ public class TomcatFormBuilder implements AbstractFormBuilder {
   }
 
   public Form getResult() {
-    return new TomcatForm(formFields, defaultData);
+    return new PrototypeForm(formFields, defaultData);
   }
 }
