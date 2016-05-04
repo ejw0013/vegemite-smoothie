@@ -11,8 +11,5 @@ Library System Software
 
 ## Current issues
 
-* Nothing is done
+* Notifications, controllers, and forms
 
-## Future Goals
-
-* TODO
