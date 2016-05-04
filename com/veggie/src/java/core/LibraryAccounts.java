@@ -1,7 +1,7 @@
-package com.veggie.src.java.entities;
+package com.veggie.src.java.core;
 
-import com.veggie.src.java.entities.accounts.EmployeeAccount;
-import com.veggie.src.java.entities.accounts.PatronAccount;
+import com.veggie.src.java.core.account.EmployeeAccount;
+import com.veggie.src.java.core.account.PatronAccount;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.veggie.src.java.entities.media;
+package com.veggie.src.java.core.media;
 
 public class MediaItem{
 	private int id;

@@ -4,7 +4,7 @@ import com.veggie.src.java.controllers.Controller;
 import com.veggie.src.java.form.*;
 import com.veggie.src.java.notification.*;
 import com.veggie.src.java.database.*;
-import com.veggie.src.java.entities.media.MediaTitle;
+import com.veggie.src.java.core.media.MediaTitle;
 
 import java.util.List;
 

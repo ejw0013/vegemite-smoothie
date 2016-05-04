@@ -1,6 +1,6 @@
-package com.veggie.src.java.entities.accounts;
+package com.veggie.src.java.core.account;
 
-import com.veggie.src.java.entities.Account;
+import com.veggie.src.java.core.Account;
 
 public abstract class EmployeeAccount extends Account {
 	private int employeeId;

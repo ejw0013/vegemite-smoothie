@@ -1,7 +1,7 @@
-package com.veggie.src.java.entities;
+package com.veggie.src.java.core;
 
-import com.veggie.src.java.entities.media.MediaItem;
-import com.veggie.src.java.entities.media.MediaTitle;
+import com.veggie.src.java.core.media.MediaItem;
+import com.veggie.src.java.core.media.MediaTitle;
 
 import java.util.List;
 

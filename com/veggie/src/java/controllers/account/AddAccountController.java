@@ -1,11 +1,11 @@
 package com.veggie.src.java.controllers.account;
 
 import com.veggie.src.java.controllers.Controller;
-import com.veggie.src.java.entities.accounts.employees.AssistantAccount;
-import com.veggie.src.java.entities.accounts.employees.LibrarianAccount;
-import com.veggie.src.java.entities.accounts.patrons.GraduateStudentAccount;
-import com.veggie.src.java.entities.accounts.patrons.FacultyAccount;
-import com.veggie.src.java.entities.accounts.patrons.UndergraduateStudentAccount;
+import com.veggie.src.java.core.account.employee.AssistantAccount;
+import com.veggie.src.java.core.account.employee.LibrarianAccount;
+import com.veggie.src.java.core.account.patron.GraduateStudentAccount;
+import com.veggie.src.java.core.account.patron.FacultyAccount;
+import com.veggie.src.java.core.account.patron.UndergraduateStudentAccount;
 import com.veggie.src.java.form.Form;
 import com.veggie.src.java.form.AbstractFormBuilder;
 import com.veggie.src.java.form.AbstractFormBuilderFactory;

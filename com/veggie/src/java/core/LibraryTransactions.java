@@ -1,4 +1,4 @@
-package com.veggie.src.java.entities;
+package com.veggie.src.java.core;
 
 import java.util.List;
 

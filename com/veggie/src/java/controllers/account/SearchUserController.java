@@ -1,6 +1,6 @@
 package com.veggie.src.java.controllers.account;
 
-import com.veggie.src.java.entities.Account;
+import com.veggie.src.java.core.Account;
 import com.veggie.src.java.controllers.Controller;
 import com.veggie.src.java.notification.Notification;
 import com.veggie.src.java.form.Form;

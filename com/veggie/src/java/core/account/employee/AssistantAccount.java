@@ -1,6 +1,6 @@
-package com.veggie.src.java.entities.accounts.employees;
+package com.veggie.src.java.core.account.employee;
 
-import com.veggie.src.java.entities.accounts.EmployeeAccount;
+import com.veggie.src.java.core.account.EmployeeAccount;
 
 public class AssistantAccount extends EmployeeAccount {
 	public final String type = "AssistantAccount";

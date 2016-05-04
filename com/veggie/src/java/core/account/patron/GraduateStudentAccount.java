@@ -1,6 +1,6 @@
-package com.veggie.src.java.entities.accounts.patrons;
+package com.veggie.src.java.core.account.patron;
 
-import com.veggie.src.java.entities.accounts.PatronAccount;
+import com.veggie.src.java.core.account.PatronAccount;
 
 public class GraduateStudentAccount extends PatronAccount {
 

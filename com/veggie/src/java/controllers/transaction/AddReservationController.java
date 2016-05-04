@@ -2,10 +2,10 @@ package com.veggie.src.java.controllers.transaction;
 import java.util.List;
 
 import com.veggie.src.java.controllers.Controller;
-import com.veggie.src.java.entities.media.MediaItem;
-import com.veggie.src.java.entities.media.MediaTitle;
-import com.veggie.src.java.entities.accounts.PatronAccount;
-import com.veggie.src.java.entities.transactions.ReservationTransaction;
+import com.veggie.src.java.core.media.MediaItem;
+import com.veggie.src.java.core.media.MediaTitle;
+import com.veggie.src.java.core.account.PatronAccount;
+import com.veggie.src.java.core.transactions.ReservationTransaction;
 import com.veggie.src.java.form.Form;
 import com.veggie.src.java.form.AbstractFormBuilder;
 import com.veggie.src.java.form.AbstractFormBuilderFactory;

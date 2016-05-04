@@ -1,4 +1,4 @@
-package com.veggie.src.java.entities.media;
+package com.veggie.src.java.core.media;
 
 import java.util.Map;
 import java.util.HashMap;

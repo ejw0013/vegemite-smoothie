@@ -3,10 +3,10 @@ package com.veggie.src.java.database.prototype;
 import java.util.Map;
 import java.util.HashMap;
 
-import com.veggie.src.java.entities.media.MediaTitle;
-import com.veggie.src.java.entities.media.MediaItem;
-import com.veggie.src.java.entities.Transaction;
-import com.veggie.src.java.entities.Account;
+import com.veggie.src.java.core.media.MediaTitle;
+import com.veggie.src.java.core.media.MediaItem;
+import com.veggie.src.java.core.Transaction;
+import com.veggie.src.java.core.Account;
 
 public class PrototypeDB {
 
