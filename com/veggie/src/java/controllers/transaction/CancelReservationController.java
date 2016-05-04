@@ -37,7 +37,7 @@ public class CancelReservationController implements Controller
       	userid = Integer.parseInt(formData.get(0));
       	itemid = Integer.parseInt(formData.get(1));
       	TransactionDatabaseManager transactionDBManager = AbstractDatabaseManagerFactory.getInstance().createTransactionDatabaseManager();
-      transactionDBManager.finalizeReservation(userid, itemid);
+        transactionDBManager.finalizeReservation(userid, itemid);
       }catch(Exception e){
       	System.out.println("Error: incorrect form data");
       }

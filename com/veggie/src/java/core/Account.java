@@ -94,4 +94,5 @@ public abstract class Account{
 		return this.status == SUSPENDED;
 	}
 	public abstract String getType();
+	public abstract String toString();
 }

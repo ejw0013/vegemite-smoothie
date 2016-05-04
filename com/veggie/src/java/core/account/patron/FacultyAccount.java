@@ -18,4 +18,11 @@ public class FacultyAccount extends PatronAccount {
 	public String getType(){
 		return type;
 	}
+		public String toString(){
+		StringBuilder sb = new StringBuilder();
+		sb.append("Username: " + username + " ");
+		sb.append("Account type: " + type + " ");
+		sb.append("Library ID: + " + facultyId);
+		return sb.toString();
+	}
 }
