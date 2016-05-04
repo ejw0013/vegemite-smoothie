@@ -36,6 +36,7 @@ public class PrototypeForm implements Form {
       sb.append(fieldName + ":<br>");
       sb.append("<input type=\"text\" name=\""+ fieldName + "\">");
     }
+    sb.append("<input type=\"submit\" value=\"Submit\">");
     sb.append("</form>");
     return sb.toString();
   }
