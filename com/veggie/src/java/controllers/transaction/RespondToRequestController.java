@@ -29,7 +29,12 @@ public class RespondToRequestController implements Controller {
 
 	public Notification submitForm(Form form) {
 		respondForm = form;
-		notification = AbstractNotificationFactory.getInstance().createConfirmNotification("Proceed with request response?");
+		List<String> formData = respondForm.getData();
+		if (!(manager.requestExists(Integer.parseInt(formData.get(0))))) {
+			notification = AbstractNotificationFactory.getInstance().createErrorNotification("Request does not exist");
+		} else {
+			notification = AbstractNotificationFactory.getInstance().createConfirmNotification("Proceed with request response?");
+		}
 		return notification;
 	}
 
