@@ -12,7 +12,7 @@ public class PrototypeDatabaseManagerFactory extends AbstractDatabaseManagerFact
 
     private PrototypeDB db;
 
-    private PrototypeDatabaseManagerFactory(PrototypeDB db) {
+    public PrototypeDatabaseManagerFactory(PrototypeDB db) {
         this.db = db;
     }
 

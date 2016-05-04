@@ -5,8 +5,9 @@ import java.util.*;
 import com.veggie.src.java.form.*;
 import com.veggie.src.java.notification.*;
 import com.veggie.src.java.database.*;
+import com.veggie.src.java.controllers.Controller;
 
-public class RespondToRequestController {
+public class RespondToRequestController implements Controller {
 
 	//Instance Variables
 	private Notification notification;
@@ -21,11 +22,11 @@ public class RespondToRequestController {
 		respondForm = builder.getResult();
 		manager = AbstractDatabaseManagerFactory.getInstance().createTransactionDatabaseManager();
 	}
-	
+
 	public Form activate() {
 		return respondForm;
 	}
-	
+
 	public Notification submitForm(Form form) {
 		respondForm = form;
 		notification = AbstractNotificationFactory.getInstance().createConfirmNotification("Proceed with request response?");

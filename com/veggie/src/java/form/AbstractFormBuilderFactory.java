@@ -5,6 +5,9 @@ public abstract class AbstractFormBuilderFactory {
     protected static AbstractFormBuilderFactory instance = null;
 
     public static AbstractFormBuilderFactory getInstance() {
+        if (instance == null) {
+            instance = new PrototypeFormBuilderFactory();
+        }
         return instance;
     }
 

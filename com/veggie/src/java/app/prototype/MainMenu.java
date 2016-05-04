@@ -7,12 +7,15 @@ import com.sun.net.httpserver.HttpHandler;
 
 public class MainMenu implements HttpHandler {
     public void handle(HttpExchange httpExchange) throws IOException {
-        String query = httpExchange.getRequestURI().toString().substring(1);
+        String query = httpExchange.getRequestURI().toString();
+        if (query.length() == 0 || query.charAt(query.length() - 1) != '/') query += "/";
+        query = query.substring(1);
+
         if (query.equals("favicon.ico")) return;
         if (query.length() == 0) {
             handleLogin(httpExchange);
         } else {
-            int sessionId = Integer.parseInt(query);
+            int sessionId = Integer.parseInt(query.substring(0, query.indexOf("/")));
             handleMainMenu(httpExchange, sessionId);
         }
     }
