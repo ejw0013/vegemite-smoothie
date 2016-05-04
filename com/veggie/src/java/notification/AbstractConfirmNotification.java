@@ -21,5 +21,5 @@ public abstract class AbstractConfirmNotification implements Notification {
     recieved = true;
   }
 
-  public abstract String render(String returnURI);
+  public abstract String render(String returnURI, String currentURI);
 }
