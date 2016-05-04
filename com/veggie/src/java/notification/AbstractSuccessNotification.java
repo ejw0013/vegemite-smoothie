@@ -14,4 +14,6 @@ public abstract class AbstractSuccessNotification implements Notification {
   public final void submit() {
     recieved = true;
   }
+
+  public abstract String render(String returnURI, String currentURI);
 }

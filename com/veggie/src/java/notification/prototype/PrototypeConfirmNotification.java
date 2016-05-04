@@ -12,4 +12,14 @@ public class PrototypeConfirmNotification extends AbstractConfirmNotification {
   public String toString() {
     return this.message;
   }
+
+   public String render(String returnURI){
+  	StringBuilder sb = new StringBuilder();
+  	sb.append("<html><body>");
+  	sb.append(this.message);
+  	sb.append("<br>");
+  	sb.append("<a href=\"" + returnURI + "\">Go back to homepage</a>");
+  	sb.append("</body></html>");
+    return sb.toString();
+  }
 }
