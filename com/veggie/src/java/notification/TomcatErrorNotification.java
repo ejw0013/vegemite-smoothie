@@ -7,7 +7,7 @@ public class TomcatErrorNotification extends AbstractErrorNotification {
     this.message = message;
   }
 
-  public String render() {
+  public String toString() {
     return this.message;
   }
 }

@@ -7,7 +7,7 @@ public class TomcatConfirmNotification extends AbstractConfirmNotification {
     this.message = message;
   }
 
-  public String render() {
+  public String toString() {
     return this.message;
   }
 }

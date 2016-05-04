@@ -11,8 +11,12 @@ public class TomcatForm implements Form {
     this.data = defaultData;
   }
 
-  public String render() {
-    return data.toString();
+  public String toString() {
+    String out = "";
+    for (int i = 0; i < fieldNames.size(); i++) {
+        out += fieldNames.get(i) + ": " + data.get(i) + "\n";
+    }
+    return out;
   }
 
   public List<String> getFieldNames() {

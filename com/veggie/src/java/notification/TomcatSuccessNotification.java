@@ -7,7 +7,7 @@ public class TomcatSuccessNotification extends AbstractSuccessNotification {
     this.message = message;
   }
 
-  public String render() {
+  public String toString() {
     return this.message;
   }
 }
