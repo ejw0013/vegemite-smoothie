@@ -26,4 +26,17 @@ public class PrototypeForm implements Form {
   public List<String> getData() {
     return data;
   }
+
+  public String render(String url) {
+    url = url.substring(0, url.length() - 1);
+    url += "1";
+    StringBuilder sb =new StringBuilder();
+    sb.append("<form method=\"post\" action=\"" + url + "\">");
+    for(String fieldName : fieldNames){
+      sb.append(fieldName + ":<br>");
+      sb.append("<input type=\"text\" name=\""+ fieldName + "\">");
+    }
+    sb.append("</form>");
+    return sb.toString();
+  }
 }
