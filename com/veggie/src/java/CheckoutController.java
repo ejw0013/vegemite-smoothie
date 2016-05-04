@@ -30,7 +30,7 @@ public class CheckoutController implements Controller
   {
     return form;
   }
-  
+
   public Notification submitForm()
   {
      List<String> formData = form.getData();
@@ -50,7 +50,8 @@ public class CheckoutController implements Controller
       }catch(Exception e){
       	System.out.println("Error: incorrect form data");
       }
-      
+
       return notification;   //???????
 
   }
+}

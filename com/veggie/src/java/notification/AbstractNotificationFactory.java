@@ -1,7 +1,12 @@
 package com.veggie.src.java.notification;
 
-public interface AbstractNotificationFactory {
-  public AbstractErrorNotification createErrorNotification(String message);
-  public AbstractSuccessNotification createSuccessNotification(String message);
-  public AbstractConfirmNotification createConfirmNotification(String message);
+public abstract class AbstractNotificationFactory {
+    protected AbstractNotificationFactory instance = null;
+
+    public AbstractNotificationFactory getInstance() {
+        return instance;
+    }
+    public abstract AbstractErrorNotification createErrorNotification(String message);
+    public abstract AbstractSuccessNotification createSuccessNotification(String message);
+    public abstract AbstractConfirmNotification createConfirmNotification(String message);
 }
