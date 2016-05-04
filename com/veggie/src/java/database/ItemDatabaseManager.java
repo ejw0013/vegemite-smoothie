@@ -2,7 +2,7 @@ package com.veggie.src.java.database;
 
 import java.util.Set;
 import java.util.List;
-import com.veggie.src.java.MediaItem;
+import com.veggie.src.java.entities.media.MediaItem;
 
 public interface ItemDatabaseManager extends DatabaseManager {
   public void addItem(MediaItem item);

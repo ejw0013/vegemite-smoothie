@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashSet;
 
-import com.veggie.src.java.Account;
-import com.veggie.src.java.AssistantAccount;
-import com.veggie.src.java.LibrarianAccount;
-import com.veggie.src.java.FacultyAccount;
-import com.veggie.src.java.GraduateStudentAccount;
-import com.veggie.src.java.UndergraduateStudentAccount;
+import com.veggie.src.java.entities.Account;
+import com.veggie.src.java.entities.accounts.employees.AssistantAccount;
+import com.veggie.src.java.entities.accounts.employees.LibrarianAccount;
+import com.veggie.src.java.entities.accounts.patrons.FacultyAccount;
+import com.veggie.src.java.entities.accounts.patrons.GraduateStudentAccount;
+import com.veggie.src.java.entities.accounts.patrons.UndergraduateStudentAccount;
 import com.veggie.src.java.database.AccountDatabaseManager;
 
 public class PrototypeAccountDatabaseManager extends PrototypeDatabaseManager implements AccountDatabaseManager {

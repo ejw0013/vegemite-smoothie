@@ -3,12 +3,12 @@ package com.veggie.src.java.database.prototype;
 import java.util.List;
 import java.util.ArrayList;
 
-import com.veggie.src.java.Transaction;
-import com.veggie.src.java.ReservationTransaction;
-import com.veggie.src.java.RentalTransaction;
-import com.veggie.src.java.Account;
+import com.veggie.src.java.entities.Transaction;
+import com.veggie.src.java.entities.transactions.ReservationTransaction;
+import com.veggie.src.java.entities.transactions.RentalTransaction;
+import com.veggie.src.java.entities.Account;
 import com.veggie.src.java.database.TransactionDatabaseManager;
-import com.veggie.src.java.MediaItem;
+import com.veggie.src.java.entities.media.MediaItem;
 
 
 public class PrototypeTransactionDatabaseManager extends PrototypeDatabaseManager implements TransactionDatabaseManager {

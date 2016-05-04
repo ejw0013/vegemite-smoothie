@@ -2,7 +2,7 @@ package com.veggie.src.java.database;
 
 import java.util.Set;
 import java.util.List;
-import com.veggie.src.java.MediaTitle;
+import com.veggie.src.java.entities.media.MediaTitle;
 
 
 public interface TitleDatabaseManager extends DatabaseManager {
