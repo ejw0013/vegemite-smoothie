@@ -118,4 +118,16 @@ public class PrototypeTransactionDatabaseManager extends PrototypeDatabaseManage
     public void resolveRequest(int transactionId) {
         db.getTransactionTable().remove(transactionId);
     }
+
+    public boolean requestExists(int transactionId){
+        if(db.getTransactionTable().get(transactionId) != null){
+            Transaction transaction = db.getTransactionTable().get(transactionId);
+            if(transaction instanceof RequestTransaction){
+                if( transaction.getStatus() == Transaction.ACTIVE){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }
