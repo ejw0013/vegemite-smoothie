@@ -28,7 +28,12 @@ public class RemoveItemController implements Controller {
 
 	public Notification submitForm(Form form) {
 		removeItemForm = form;
-		notification = AbstractNotificationFactory.getInstance().createConfirmNotification("Proceed with item removal?");
+		List<String> formData = removeItemForm.getData();
+		if (manager.getItem(Integer.parseInt(formData.get(0))) == null) {
+			notification = AbstractNotificationFactory.getInstance().createErrorNotification("Item not found");
+		} else {
+			notification = AbstractNotificationFactory.getInstance().createConfirmNotification("Proceed with item removal?");
+		}
 		return notification;
 	}
 

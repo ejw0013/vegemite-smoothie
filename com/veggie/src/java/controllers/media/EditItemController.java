@@ -30,7 +30,12 @@ public class EditItemController implements Controller {
 
 	public Notification submitForm(Form form) {
 		editItemForm = form;
-		notification = AbstractNotificationFactory.getInstance().createConfirmNotification("Proceed with edit?");
+		List<String> formData = editItemForm.getData();
+		if (manager.getItem(Integer.parseInt(formData.get(0))) == null) {
+			notification = AbstractNotificationFactory.getInstance().createErrorNotification("Item not found");
+		} else {
+			notification = AbstractNotificationFactory.getInstance().createConfirmNotification("Proceed with edit?");
+		}
 		return notification;
 	}
 

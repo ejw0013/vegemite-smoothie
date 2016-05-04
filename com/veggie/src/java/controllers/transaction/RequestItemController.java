@@ -35,7 +35,12 @@ public class RequestItemController implements Controller {
 
 	public Notification submitForm(Form form) {
 		requestItemForm = form;
-		notification = AbstractNotificationFactory.getInstance().createConfirmNotification("Proceed with item request?");
+		List<String> formData = requestItemForm.getData();
+		if (accountManager.getUser(Integer.parseInt(formData.get(0))) == null) {
+			notification = AbstractNotificationFactory.getInstance().createErrorNotification("User with specified Account ID does not exist");
+		} else {
+			notification = AbstractNotificationFactory.getInstance().createConfirmNotification("Proceed with item request?");
+		}
 		return null;
 	}
 
