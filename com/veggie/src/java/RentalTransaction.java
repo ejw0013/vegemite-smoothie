@@ -6,6 +6,7 @@ public class RentalTransaction extends Transaction {
 
   private MediaItem item;
   private int numRenewals;
+  private long timeDue;
 
   public RentalTransaction(final PatronAccount patron, final MediaItem item, final int id){
     this.item = item;
@@ -22,6 +23,19 @@ public class RentalTransaction extends Transaction {
 
   public int getNumRenewals(){
     return numRenewals;
+  }
+
+  public String toString(){
+    StringBuilder sb = new StringBuilder();
+    sb.append("Rental for: ");
+    sb.append(item.getTitle() + "\t");
+    sb.append("Time rented: " + time + "\t");
+    if(status == ACTIVE){
+      sb.append("Active");
+    }else{
+      sb.append("Inactive");
+    }
+    return sb.toString();
   }
 
 }

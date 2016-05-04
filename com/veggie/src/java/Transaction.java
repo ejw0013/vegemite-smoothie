@@ -33,4 +33,6 @@ public abstract class Transaction{
 	public final void resolve() {
 		status = INACTIVE;
 	}
+
+	public abstract String toString();
 }

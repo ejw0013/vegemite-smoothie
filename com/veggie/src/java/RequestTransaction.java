@@ -11,11 +11,21 @@ public class RequestTransaction extends Transaction {
     this.description = description;
     this.id = id;
     this.time = Instant.now().getEpochSecond();
-    status = 1;
+    status = ACTIVE;
   }
 
   public String getDescription() {
     return description;
   }
 
+  public String toString(){
+    StringBuilder sb = new StringBuilder();
+    sb.append("Request description: " + description);
+    if(status == ACTIVE){
+      sb.append("\t Waiting Librarian Attention");
+    }else{
+      sb.append("\t resolved");
+    }
+    return sb.toString();
+  }
 }

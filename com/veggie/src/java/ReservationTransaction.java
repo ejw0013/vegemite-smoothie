@@ -11,10 +11,23 @@ public class ReservationTransaction extends Transaction {
     this.patron = patron;
     this.id = id;
     this.time = Instant.now().getEpochSecond();
-    status = 1;
+    status = ACTIVE;
   }
 
   public MediaTitle getTitle() {
     return title;
+  }
+
+  public String toString(){
+    StringBuilder sb = new StringBuilder();
+    sb.append("Reservation for: ");
+    sb.append(title.getTitle() + "\t");
+    sb.append("Time submitted: " + time + "\t");
+    if(status == ACTIVE){
+      sb.append("Active");
+    }else{
+      sb.append("Inactive");
+    }
+    return sb.toString();
   }
 }
