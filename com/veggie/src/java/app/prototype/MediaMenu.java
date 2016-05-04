@@ -24,17 +24,23 @@ public class MediaMenu implements HttpHandler {
         if (query.length() == 0) {
             Server.sendToLogin(httpExchange);
         } else {
-            int slashLoc = query.indexOf("/");
-            if (slashLoc < 0) slashLoc = query.length();
-            int sessionId = Integer.parseInt(query.substring(0, slashLoc));
-            String controller = query.substring(slashLoc + 1);
-            if (controller.indexOf("/") > 0) controller = controller.substring(0, controller.indexOf("/"));
-            handleMenu(httpExchange, sessionId, controller);
+            String[] uriInfo = query.split("/");
+            int sessionId = Integer.parseInt(uriInfo[0]);
+            String controller = "";
+            int stepNo = -1;
+            if (uriInfo.length > 1) {
+                controller = uriInfo[1];
+            }
+            if (uriInfo.length > 2) {
+                stepNo = Integer.parseInt(uriInfo[2]);
+            }
+        //    System.err.println(sessionId + " |" + controller + "| " + stepNo);
+            handleMenu(httpExchange, sessionId, controller, stepNo);
         }
 
     }
 
-    public void handleMenu(HttpExchange httpExchange, int sessionId, String controller) throws IOException {
+    public void handleMenu(HttpExchange httpExchange, int sessionId, String controller, int stepNo) throws IOException {
 
         Map<String, Controller> controllerMap = Server.getMediaBinding(sessionId).getControllers();
         Map<String, String> nameMap = Server.getMediaBinding(sessionId).getNames();
@@ -45,7 +51,7 @@ public class MediaMenu implements HttpHandler {
             response.append("<html><body>");
             response.append("<h1>Media</h1><br/>");
             String linkStart = "<a href=\"/media/" + sessionId + "/";
-            String linkEnd = "\">";
+            String linkEnd = "/0\">";
             String lineEnd = "</a><br/>";
             for (String s : controllerMap.keySet()) {
                 response.append(linkStart + s + linkEnd + nameMap.get(s) + lineEnd);
@@ -54,10 +60,14 @@ public class MediaMenu implements HttpHandler {
             response.append("</body></html>");
             Server.writeResponse(httpExchange, response.toString());
         } else if (controllerMap.containsKey(controller)) {
-            Controller c = controllerMap.get(controller);
-            StringBuilder response = new StringBuilder();
-            response.append(c.activate().getFieldNames().toString());
-            Server.writeResponse(httpExchange, response.toString());
+            if (stepNo == 0) {
+                Controller c = controllerMap.get(controller);
+                StringBuilder response = new StringBuilder();
+                response.append(c.activate().getFieldNames().toString());
+                Server.writeResponse(httpExchange, response.toString());
+            } else {
+                Server.writeResponse(httpExchange, "INVALID STEP NUMBER!");
+            }
         } else {
             StringBuilder response = new StringBuilder();
             response.append("<html><body>");
