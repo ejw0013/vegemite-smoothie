@@ -5,6 +5,7 @@ import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 import com.veggie.src.java.core.Account;
 import com.veggie.src.java.core.account.employee.LibrarianAccount;
@@ -83,5 +84,18 @@ public class Server {
     public static int getNextSessionNumber() {
         sessionNumber++;
         return sessionNumber;
+    }
+
+    public static Map<String, String> queryToMap(String query) {
+        Map<String, String> result = new TreeMap<>();
+        for (String param : query.split("&")) {
+            String pair[] = param.split("=");
+            if (pair.length > 1) {
+                result.put(pair[0].replace('+', ' '), pair[1].replace('+', ' '));
+            } else {
+                result.put(pair[0].replace('+', ' '), "");
+            }
+        }
+        return result;
     }
 }

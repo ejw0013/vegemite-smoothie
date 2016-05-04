@@ -6,7 +6,7 @@ public class PrototypeForm implements Form {
   private List<String> data;
   private List<String> fieldNames;
 
-  protected PrototypeForm(List<String> fieldNames, List<String> defaultData) {
+  public PrototypeForm(List<String> fieldNames, List<String> defaultData) {
     this.fieldNames = fieldNames;
     this.data = defaultData;
   }
@@ -25,6 +25,10 @@ public class PrototypeForm implements Form {
 
   public List<String> getData() {
     return data;
+  }
+
+  public void setData(List<String> data) {
+      this.data = data;
   }
 
   public String render(String url) {

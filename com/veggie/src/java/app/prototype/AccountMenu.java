@@ -5,7 +5,13 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.TreeMap;
+import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
 
+
+import com.veggie.src.java.form.Form;
+import com.veggie.src.java.form.PrototypeForm;
 import com.veggie.src.java.controllers.account.*;
 import com.veggie.src.java.controllers.Controller;
 
@@ -64,8 +70,21 @@ public class AccountMenu implements HttpHandler {
                 StringBuilder response = new StringBuilder();
                 response.append(c.activate().render(uri));
                 Server.writeResponse(httpExchange, response.toString());
+            } else if (stepNo == 1){
+                Controller c = controllerMap.get(controller);
+                Scanner queryScanner = new Scanner(httpExchange.getRequestBody());
+                String query = queryScanner.nextLine();
+                Map<String, String> formResponse = Server.queryToMap(query);
+                List<String> fieldNames = new ArrayList<>(), fieldData = new ArrayList<>();
+                for (String fieldName : formResponse.keySet()) {
+                    String fieldEntry = formResponse.get(fieldName);
+                    fieldNames.add(fieldName);
+                    fieldData.add(fieldEntry);
+                }
+                Form f = new PrototypeForm(fieldNames, fieldData);
+                Server.writeResponse(httpExchange, c.submitForm(f).toString());
             } else {
-                Server.writeResponse(httpExchange, "INVALID STEP NUMBER!");
+                Server.writeResponse(httpExchange, "INVALID STEP NUMBER");
             }
         } else {
             StringBuilder response = new StringBuilder();
