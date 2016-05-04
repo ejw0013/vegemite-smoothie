@@ -17,7 +17,7 @@ public class AddItemController implements Controller {
 	private Form addItemForm;
 	private TitleDatabaseManager manager;
 	private int titleStatus;
-	
+
 	//Methods
 	public AddItemController() {
 		AbstractFormBuilder builder = AbstractFormBuilderFactory.getInstance().createFormBuilder();
@@ -28,11 +28,11 @@ public class AddItemController implements Controller {
 		addItemForm = builder.getResult();
 		manager = AbstractDatabaseManagerFactory.getInstance().createTitleDatabaseManager();
 	}
-	
+
 	public Form clickAddItemButton() {
 	  return addItemForm;
 	}
-	
+
 	public Notification submitForm() {
 		List<String> formData = addItemForm.getData();
 		titleStatus = manager.checkTitle(formData.get(0), addItemForm.getFieldNames(), formData);
@@ -43,7 +43,7 @@ public class AddItemController implements Controller {
 		}
 		return notification;
 	}
-	
+
 	public void respondToNotification() {
 		if (notification instanceof AbstractErrorNotification) {
 			if (notification.ok()) {
