@@ -21,7 +21,8 @@ public class ViewRequestController implements Controller {
 	public ViewRequestController() {}
 
 	public Form activate() {
-		return null;
+		AbstractFormBuilder builder = AbstractFormBuilderFactory.getInstance().createFormBuilder();
+		return builder.getResult();
 	}
 
 	public Notification submitForm(Form form) {

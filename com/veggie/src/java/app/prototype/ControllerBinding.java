@@ -91,6 +91,8 @@ public class ControllerBinding {
         if (permissions == Account.LIBRARIAN) {
             cMap.put("respond", new RespondToRequestController());
             nMap.put("respond", "Respond");
+            cMap.put("viewrequest", new ViewRequestController());
+            nMap.put("viewrequest", "View Requests");
         }
 
         if (permissions == Account.LIBRARIAN || permissions == Account.ASSISTANT) {
