@@ -1,6 +1,6 @@
 package com.veggie.src.java.notification;
 
-public abstract class AbstractErrorNotification {
+public abstract class AbstractErrorNotification implements Notification {
   private boolean recieved;
 
   public final boolean ok() {
