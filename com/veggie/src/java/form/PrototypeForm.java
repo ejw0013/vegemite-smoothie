@@ -28,16 +28,28 @@ public class PrototypeForm implements Form {
   }
 
   public String render(String url) {
+
     url = url.substring(0, url.length() - 1);
     url += "1";
-    StringBuilder sb =new StringBuilder();
-    sb.append("<form method=\"post\" action=\"" + url + "\">");
-    for(String fieldName : fieldNames){
-      sb.append(fieldName + ":<br>");
-      sb.append("<input type=\"text\" name=\""+ fieldName + "\">");
+
+    if (fieldNames.size() == 0) {
+      StringBuilder response = new StringBuilder();
+      response.append("<html><script>");
+      response.append("window.location = \"" + url + "\"");
+      response.append("</script></html>");
+      return response.toString();
+    } else {
+      StringBuilder sb =new StringBuilder();
+      sb.append("<html><body>");
+      sb.append("<form method=\"post\" action=\"" + url + "\">");
+      for(String fieldName : fieldNames){
+        sb.append(fieldName + ":<br>");
+        sb.append("<input type=\"text\" name=\""+ fieldName + "\"><br>");
+      }
+      sb.append("<input type=\"submit\" value=\"Submit\">");
+      sb.append("</form>");
+      sb.append("</body></html>");
+      return sb.toString();
     }
-    sb.append("<input type=\"submit\" value=\"Submit\">");
-    sb.append("</form>");
-    return sb.toString();
   }
 }

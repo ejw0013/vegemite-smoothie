@@ -59,9 +59,10 @@ public class AccountMenu implements HttpHandler {
             Server.writeResponse(httpExchange, response.toString());
         } else if (controllerMap.containsKey(controller)) {
             if (stepNo == 0) {
+                String uri = httpExchange.getRequestURI().toString();
                 Controller c = controllerMap.get(controller);
                 StringBuilder response = new StringBuilder();
-                response.append(c.activate().getFieldNames().toString());
+                response.append(c.activate().render(uri));
                 Server.writeResponse(httpExchange, response.toString());
             } else {
                 Server.writeResponse(httpExchange, "INVALID STEP NUMBER!");
