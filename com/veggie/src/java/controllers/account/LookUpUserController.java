@@ -8,6 +8,7 @@ import com.veggie.src.java.form.AbstractFormBuilder;
 import com.veggie.src.java.form.AbstractFormBuilderFactory;
 import com.veggie.src.java.database.AbstractDatabaseManagerFactory;
 import com.veggie.src.java.database.AccountDatabaseManager;
+import com.veggie.src.java.notification.AbstractNotificationFactory;
 
 import java.util.List;
 
@@ -24,12 +25,7 @@ public class LookUpUserController implements Controller {
       manager = AbstractDatabaseManagerFactory.getInstance().createAccountDatabaseManager();
    }
 
-   /*public Form clickLookUpUser() {
-      return lookUpForm;
-   }*/
-
-   public Form activate() { //Account lookUpUser(int idNum) {
-      //Account user = manager.getUser(idNum);
+   public Form activate() {
       return lookUpForm;
    }
 
@@ -37,7 +33,9 @@ public class LookUpUserController implements Controller {
       lookUpForm = form;
       List<String> formData = lookUpForm.getData();
       Account user = manager.getUser(Integer.parseInt(formData.get(0)));
-      return notification; //???
+      String report = "User " + user.getusername() + " found!\n";
+      notification = AbstractNotificationFactory.getInstance().createSuccessNotification(user.toString()); //NO TOSTRING YET
+      return notification;
    }
    
    public void respondToNotification(Notification notification) {

@@ -7,6 +7,7 @@ import com.veggie.src.java.form.AbstractFormBuilder;
 import com.veggie.src.java.form.AbstractFormBuilderFactory;
 import com.veggie.src.java.database.AbstractDatabaseManagerFactory;
 import com.veggie.src.java.database.AccountDatabaseManager;
+import com.veggie.src.java.notification.AbstractNotificationFactory;
 
 import java.util.List;
 
@@ -30,12 +31,10 @@ public class DeleteAccountController implements Controller {
    public Notification submitForm(Form form) {
       deleteAccountForm = form;
       List<String> formData = deleteAccountForm.getData();
-      //find user from ID
-      //LookUpUserController lookUp = new LookUpUserController();
-      //Account user = lookUp.lookUpUser(Integer.parseInt(formData.get(0)));
       //delete the user
       manager.delete(Integer.parseInt(formData.get(0)));
-      return null;
+      notification = AbstractNotificationFactory.getInstance().createSuccessNotification("Account deleted!");
+      return notification;
    }
    
    public void respondToNotification(Notification notification) {

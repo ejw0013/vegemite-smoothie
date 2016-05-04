@@ -7,6 +7,7 @@ import com.veggie.src.java.form.AbstractFormBuilder;
 import com.veggie.src.java.form.AbstractFormBuilderFactory;
 import com.veggie.src.java.database.AbstractDatabaseManagerFactory;
 import com.veggie.src.java.database.AccountDatabaseManager;
+import com.veggie.src.java.notification.AbstractNotificationFactory;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -44,7 +45,8 @@ public class EditAccountController implements Controller {
       fields.set(1, formData.get(2));
       fields.set(2, formData.get(3));
       manager.edit(Integer.parseInt(editAccountForm.getData().get(0)), fields, formData);
-      return null; //notificatons
+      notification = AbstractNotificationFactory.getInstance().createSuccessNotification("Account edited!");
+      return notification;
    }
    
    public void respondToNotification(Notification notification) {

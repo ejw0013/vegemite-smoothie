@@ -7,6 +7,7 @@ import com.veggie.src.java.form.AbstractFormBuilder;
 import com.veggie.src.java.form.AbstractFormBuilderFactory;
 import com.veggie.src.java.database.AbstractDatabaseManagerFactory;
 import com.veggie.src.java.database.AccountDatabaseManager;
+import com.veggie.src.java.notification.AbstractNotificationFactory;
 
 import java.util.List;
 
@@ -32,7 +33,8 @@ public class SuspendAccountController implements Controller {
       List<String> formData = suspendAccountForm.getData();
       //suspend the user
       manager.suspend(Integer.parseInt(formData.get(0)));
-      return null; //notification
+      notification = AbstractNotificationFactory.getInstance().createSuccessNotification("Account Suspended!");
+      return notification;
    }
    
    public void respondToNotification(Notification notification) {

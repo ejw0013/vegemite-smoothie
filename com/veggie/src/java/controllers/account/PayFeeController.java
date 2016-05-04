@@ -7,6 +7,7 @@ import com.veggie.src.java.form.AbstractFormBuilder;
 import com.veggie.src.java.form.AbstractFormBuilderFactory;
 import com.veggie.src.java.database.AbstractDatabaseManagerFactory;
 import com.veggie.src.java.database.AccountDatabaseManager;
+import com.veggie.src.java.notification.AbstractNotificationFactory;
 
 import java.util.List;
 
@@ -32,7 +33,13 @@ public class PayFeeController implements Controller {
       payFeeForm = form;
       List<String> formData = payFeeForm.getData();
       double change = manager.payFee(Integer.parseInt(formData.get(0)), Double.parseDouble(formData.get(1)));
-      return notification; //notifications
+      if (change < 0) {
+         String text = "Payment proccessed. Change Due: $" + Math.abs(change);
+         notification = AbstractNotificationFactory.getInstance().createSuccessNotification(text);
+      }
+      else
+         notification = AbstractNotificationFactory.getInstance().createSuccessNotification("Payment processed. No change due.");
+      return notification;
    }
    
    public void respondToNotification(Notification notification) {

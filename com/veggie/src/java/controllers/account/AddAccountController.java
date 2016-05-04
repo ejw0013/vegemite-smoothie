@@ -12,6 +12,7 @@ import com.veggie.src.java.form.AbstractFormBuilderFactory;
 import com.veggie.src.java.notification.Notification;
 import com.veggie.src.java.database.AbstractDatabaseManagerFactory;
 import com.veggie.src.java.database.AccountDatabaseManager;
+import com.veggie.src.java.notification.AbstractNotificationFactory;
 
 import java.util.List;
 
@@ -67,12 +68,14 @@ public class AddAccountController implements Controller {
          manager.add(newUser);
       }
       else {
-         System.out.println("Error: invalid account type");
+         notification = AbstractNotificationFactory.getInstance().createErrorNotification("Error: invalid account type.");
+         return notification;
       }
-      return notification;   //???????
+      notification = AbstractNotificationFactory.getInstance().createSuccessNotification("Account added!");
+      return notification;
    }
    
    public void respondToNotification(Notification notification) {
-   
+      
    }
 }

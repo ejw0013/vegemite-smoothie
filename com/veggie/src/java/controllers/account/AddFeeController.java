@@ -7,6 +7,7 @@ import com.veggie.src.java.form.AbstractFormBuilder;
 import com.veggie.src.java.form.AbstractFormBuilderFactory;
 import com.veggie.src.java.database.AbstractDatabaseManagerFactory;
 import com.veggie.src.java.database.AccountDatabaseManager;
+import com.veggie.src.java.notification.AbstractNotificationFactory;
 
 import java.util.List;
 
@@ -32,7 +33,8 @@ public class AddFeeController implements Controller {
       addFeeForm = form;
       List<String> formData = form.getData();
       manager.addFee(Integer.parseInt(formData.get(0)), Double.parseDouble(formData.get(1)));
-      return notification; //notification
+      notification = AbstractNotificationFactory.getInstance().createSuccessNotification("Fee Added!");
+      return notification; 
    }
    
    public void respondToNotification(Notification notification) {

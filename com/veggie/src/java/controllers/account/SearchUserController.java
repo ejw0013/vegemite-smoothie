@@ -8,6 +8,7 @@ import com.veggie.src.java.form.AbstractFormBuilder;
 import com.veggie.src.java.form.AbstractFormBuilderFactory;
 import com.veggie.src.java.database.AbstractDatabaseManagerFactory;
 import com.veggie.src.java.database.AccountDatabaseManager;
+import com.veggie.src.java.notification.AbstractNotificationFactory;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -35,6 +36,12 @@ public class SearchUserController implements Controller {
       ArrayList<String> fields = new ArrayList<String>(1);
       fields.add(0, "username");
       List<Account> matchingUsers = manager.getMatchingUsers(fields, formData);
+      String report = "";
+      int size = matchingUsers.size();
+      for(int i = 0; i < size; i++) {
+         Account user = matchingUsers.get(i);
+         report += user.toString(); //NO TOSTRING YET
+      }
       return notification; //notification
    }
    

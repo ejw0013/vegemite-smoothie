@@ -14,6 +14,7 @@ import com.veggie.src.java.core.account.patron.FacultyAccount;
 import com.veggie.src.java.core.account.patron.GraduateStudentAccount;
 import com.veggie.src.java.core.account.patron.UndergraduateStudentAccount;
 import com.veggie.src.java.core.Transaction;
+import com.veggie.src.java.notification.AbstractNotificationFactory;
 
 import java.util.List;
 
@@ -39,7 +40,8 @@ public class ReportController implements Controller {
       List<String> formData = reportForm.getData();
       Account user = manager.getUser(Integer.parseInt(formData.get(0)));
       String report = generateReport(user);
-      return notification; //notifications
+      notification = AbstractNotificationFactory.getInstance().createSuccessNotification(report);
+      return notification;
    }
    
    private String generateReport(Account user) {
