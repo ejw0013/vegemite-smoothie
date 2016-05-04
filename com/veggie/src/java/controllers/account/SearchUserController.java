@@ -36,11 +36,11 @@ public class SearchUserController implements Controller {
       ArrayList<String> fields = new ArrayList<String>(1);
       fields.add(0, "username");
       List<Account> matchingUsers = manager.getMatchingUsers(fields, formData);
-      String report = "";
+      String report = "Matching User(s):\n";
       int size = matchingUsers.size();
       for(int i = 0; i < size; i++) {
          Account user = matchingUsers.get(i);
-         report += user.toString(); //NO TOSTRING YET
+         report += user.toString() + "\n";
       }
       return notification; //notification
    }

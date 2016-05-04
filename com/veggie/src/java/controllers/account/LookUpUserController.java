@@ -33,8 +33,8 @@ public class LookUpUserController implements Controller {
       lookUpForm = form;
       List<String> formData = lookUpForm.getData();
       Account user = manager.getUser(Integer.parseInt(formData.get(0)));
-      String report = "User " + user.getusername() + " found!\n";
-      notification = AbstractNotificationFactory.getInstance().createSuccessNotification(user.toString()); //NO TOSTRING YET
+      //String report = "User " + user.getusername() + " found!\n";
+      notification = AbstractNotificationFactory.getInstance().createSuccessNotification(user.toString());
       return notification;
    }
    
