@@ -7,7 +7,7 @@ import com.veggie.src.java.notification.AbstractSuccessNotification;
 
 public class PrototypeNotificationFactory extends AbstractNotificationFactory {
 
-  public AbstractNotificationFactory getInstance() {
+  public static AbstractNotificationFactory getInstance() {
       if (instance == null) {
           instance = new PrototypeNotificationFactory();
       }

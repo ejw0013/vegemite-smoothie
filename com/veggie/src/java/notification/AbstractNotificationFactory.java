@@ -1,9 +1,9 @@
 package com.veggie.src.java.notification;
 
 public abstract class AbstractNotificationFactory {
-    protected AbstractNotificationFactory instance = null;
+    protected static AbstractNotificationFactory instance = null;
 
-    public AbstractNotificationFactory getInstance() {
+    public static AbstractNotificationFactory getInstance() {
         return instance;
     }
     public abstract AbstractErrorNotification createErrorNotification(String message);
